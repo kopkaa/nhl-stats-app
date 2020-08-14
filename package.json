@@ -9,9 +9,12 @@
     "apollo": "vue-cli-service apollo:dev --generate-schema",
     "apollo:schema:generate": "vue-cli-service apollo:schema:generate",
     "apollo:schema:publish": "vue-cli-service apollo:schema:publish",
-    "apollo:start": "vue-cli-service apollo:start"
+    "apollo:start": "vue-cli-service apollo:start",
+    "server": "nodemon ./apollo-server/server.js"
+
   },
   "dependencies": {
+    "apollo-server": "^2.16.1",
     "core-js": "^3.6.5",
     "graphql-type-json": "^0.2.1",
     "lowdb": "^1.0.0",
