@@ -13,33 +13,25 @@
 </template>
 
 <script>
-import getConference from '../graphql/Conference.gql'
-import gql from "graphql-tag";
+import {CONFS} from '../graphql/Conference.js'
+//import gql from "graphql-tag";
 
 export default {
   data () {
     return {
-      getConference: {},
       conf: {},
     }
   },
 
   apollo: {
     getConference: {
-      query: gql` query {
-          getConferences {
-            name
-          }
-        }`,
+      query: CONFS,
       update(data) {
         return data.getConferences;
       }, 
     },
   },
 
-  created() {
-    console.log(getConference)
-  }
   
 }
 
