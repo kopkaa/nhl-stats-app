@@ -11,11 +11,12 @@
     "apollo:schema:publish": "vue-cli-service apollo:schema:publish",
     "apollo:start": "vue-cli-service apollo:start",
     "server": "nodemon ./apollo-server/server.js"
-
   },
   "dependencies": {
+    "apollo-datasource-rest": "^0.9.3",
     "apollo-server": "^2.16.1",
     "core-js": "^3.6.5",
+    "graphql-tools": "^6.0.18",
     "graphql-type-json": "^0.2.1",
     "lowdb": "^1.0.0",
     "mkdirp": "^0.5.1",

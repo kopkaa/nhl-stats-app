@@ -1,24 +1,17 @@
 const { ApolloServer } = require('apollo-server')
-const  Conference =  require('./API/TypeDefs/Conference')
+const ConferenceAPI = require('./API/DataSources/ConferenceAPI')
+const schema = require('./API/Schema')
 
-//const typeDefs = Conference;
-const typeDefs = `
-type Query {
-  _empty: String  
-}
 
-type Mutation {
-  _empty: String
-}
-
-schema {
-    query: Query
-    mutation: Mutation
-}`
 
 const server = new ApolloServer({
-	typeDefs,
-	introspection: true
+  schema,
+  introspection: true,
+  dataSources: () => {
+    return {
+      conferenceAPI: new ConferenceAPI(),
+    }
+  },
 })
 
 
