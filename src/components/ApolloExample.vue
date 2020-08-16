@@ -2,7 +2,10 @@
   <div class="apollo-example">
 
     <!-- Apollo watched Graphql query -->
-   {{getConference}}
+   <div v-for="conf of getConference" :key="conf.id">
+    {{conf.name}}
+   </div>
+
 
 
 
@@ -10,27 +13,32 @@
 </template>
 
 <script>
-//import getConference from '../graphql/getConference.gql'
+import getConference from '../graphql/Conference.gql'
 import gql from "graphql-tag";
 
 export default {
   data () {
     return {
       getConference: {},
+      conf: {},
     }
   },
 
   apollo: {
     getConference: {
-      query: gql`
-        query {
-          getConference(id: 1) {
+      query: gql` query {
+          getConferences {
             name
           }
-        }
-      `
-    }
+        }`,
+      update(data) {
+        return data.getConferences;
+      }, 
+    },
+  },
 
+  created() {
+    console.log(getConference)
   }
   
 }
