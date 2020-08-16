@@ -1,9 +1,9 @@
 <template>
   <div class="apollo-example">
 
-    <!-- Apollo watched Graphql query -->
-   <div v-for="conf of getConference" :key="conf.id">
-    {{conf.name}}
+
+  <div v-for="c of conf" :key="c.id">
+    {{c.name}}
    </div>
 
 
@@ -23,16 +23,17 @@ export default {
     }
   },
 
-  apollo: {
-    getConference: {
+  mounted(){
+    this.$apollo.query({
       query: CONFS,
       update(data) {
-        return data.getConferences;
-      }, 
-    },
-  },
+        return data.getConferences
+      }
+    }).then(data => {
+        this.conf = data.data.getConferences
+    });
 
-  
+  }
 }
 
 </script>
