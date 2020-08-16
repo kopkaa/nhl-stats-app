@@ -1,0 +1,3 @@
+query getConference ($id: Int) {
+  name
+}

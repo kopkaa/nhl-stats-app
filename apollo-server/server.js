@@ -18,11 +18,9 @@ const server = new ApolloServer({
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
-/*
-app.use('/graphql', (req,res,next) => {
-	res.sendStatus(200);
-})
 
+
+/*
 app.listen(3000);*/
 // export default app => {
 //   app.use('/files', express.static(path.resolve(__dirname, '../live/uploads')))
