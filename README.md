@@ -10,7 +10,17 @@ CLIENT
 
 
 ---TO-DO----
+- Nastavit eslint
+- i18 lokalizace
+- Automaticky schovat menu kdyz se zmensuje okno.
 
+Main Page
+	-Nadchazejici zapasy
+	- Top 5 tymu
+	- Top 5 strelcu
+	- Strelci kteri nedali dlouho gol
+	- Tym co dlouho nevyhral
+	- Tym kteremu se dari
 Menu
 	- Zapasy
 		- Tymy 
