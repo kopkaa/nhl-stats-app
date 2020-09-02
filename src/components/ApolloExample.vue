@@ -14,7 +14,6 @@
 
 <script>
 import {CONFS} from '../graphql/Conference.js'
-//import gql from "graphql-tag";
 
 export default {
   data () {
@@ -30,6 +29,7 @@ export default {
         return data.getConferences
       }
     }).then(data => {
+      console.log(data);
         this.conf = data.data.getConferences
     });
 
