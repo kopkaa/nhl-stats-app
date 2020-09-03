@@ -15,12 +15,9 @@
   "dependencies": {
     "apollo-datasource-rest": "^0.9.3",
     "apollo-server": "^2.16.1",
-    "core-js": "^3.6.5",
     "graphql-tools": "^6.0.18",
     "graphql-type-json": "^0.2.1",
-    "lowdb": "^1.0.0",
-    "mkdirp": "^0.5.1",
-    "shortid": "^2.2.8",
+    "lodash": "^4.17.20",
     "vue": "^2.6.11",
     "vue-apollo": "^3.0.0-beta.11",
     "vue-router": "^3.4.3",
@@ -38,32 +35,7 @@
     "vue-cli-plugin-apollo": "~0.22.2",
     "vue-template-compiler": "^2.6.11"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "graphql/template-strings": [
-        "error",
-        {
-          "env": "literal",
-          "projectName": "app",
-          "schemaJsonFilepath": "node_modules/.temp/graphql/schema.json"
-        }
-      ]
-    },
-    "plugins": [
-      "graphql"
-    ]
-  },
+  
   "browserslist": [
     "> 1%",
     "last 2 versions",

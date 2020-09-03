@@ -13,6 +13,7 @@ CLIENT
 - Nastavit eslint
 - i18 lokalizace
 - Automaticky schovat menu kdyz se zmensuje okno.
+- TABY
 
 Main Page
 	-Nadchazejici zapasy
