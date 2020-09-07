@@ -1,43 +1,24 @@
-import Vue from 'vue';
 import Router from 'vue-router';
-import App from './App.vue';
-const _ = require('lodash');
-
-Vue.use(Router);
+import Dashboard from '@/Dashboard.vue';
+import gameRoutes from '@/modules/game/router';
 
 
-const defaultRoutes = [
-    {
-      path: '/hi',
-      name: 'App',
-      component: App,
-    }
-  ]
+const baseRoutes = [
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    title: 'Dashboard',
+    icon: 'fa-tachometer',
+    component: Dashboard,
+  },
+  {
+    path: '*',
+    redirect: { name: 'dashboard' },
+  },
+];
 
-
-var allRoutes = [];
-const requireModule = require.context('./modules', true, /\.js$/);
-const importedRoutes = [];
-
-requireModule.keys().forEach(fileName => {
-	let str = fileName.split('/');
-	str = str[1];
-	if ( fileName === `./${str}/router/index.js` ) {
-		
-		_.camelCase(
-			fileName.replace(/(\.\/|\.js)/g, ''))
-		}
-    console.log('FILENAMEE', fileName);
-		
-
-		importedRoutes.push(...requireModule(fileName).default);
-});
-
-
-allRoutes = allRoutes.concat(defaultRoutes, importedRoutes);
-const routes = allRoutes;
-
+const routes = baseRoutes.concat(gameRoutes);
 export default new Router({
-	mode: 'history',
-	routes
-})
+  mode: 'history',
+  routes,
+});

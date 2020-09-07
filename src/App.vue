@@ -2,7 +2,7 @@
   <div id="app">
 
     <app-menu></app-menu>
-    <!-- <router-view/> -->
+    <router-view/>
 
   <!-- 
     <img alt="Vue logo" src="./assets/logo.png">

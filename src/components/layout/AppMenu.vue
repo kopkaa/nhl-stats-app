@@ -1,6 +1,11 @@
 <template>
   <div>
-  <sidebar-menu :menu="menu" :width="menuWidth"></sidebar-menu>
+  <sidebar-menu :menu="menu" @toggle-collapse="onToggleCollapse()" :collapsed="isCollapsed" :width="menuWidth">
+    <span slot="toggle-icon">
+      <i class="fa fa-arrow-right" v-if="isCollapsed"></i>
+      <i class="fa fa-arrow-left" v-if="!isCollapsed"></i>
+    </span>
+  </sidebar-menu>
   </div>
 </template>
 
@@ -17,38 +22,48 @@ export default {
   data () {
     return {
       menuWidth: '20vw',
-      menu: [
-        {
-          header: true,
-          title: 'NHL - STATS APP',
-          hiddenOnCOllapse: true
-        },
-        {
-          href: '/',
-          title: 'Dashboard',
-          icon: 'fa fa-user'
-        },
-        {
-          href: '/match',
-          title: 'Zapasy',
-          icon: 'fa fa-user'
-        },
-        {
-          href: '/tables',
-          title: 'Tabulky',
-          icon: 'fab fa-medium'
-        },
-      ]
+      isCollapsed: false,
+      menuTitle: 'NHL - STATS APP',
+      menu: [],
     }
   },
 
   created() {
     console.log('MENU CREATED');
     console.log(this.$router);
+    this.menu = [
+      {
+        header: true,
+        title: this.menuTitle,
+        hiddenOnCOllapse: true
+      },
+      {
+        href: '/',
+        title: 'Dashboard',
+        icon: 'fa fa-home'
+      },
+      {
+        href: '/games',
+        title: 'Zapasy',
+        icon: 'fa fa-calendar'
+      },
+      {
+        href: '/tables',
+        title: 'Tabulky',
+        icon: 'fa fa-table'
+      },
+    ]
   },
 
-  mounted() {
-    console.log('MENU MOUNTED');
+  methods: {
+    onToggleCollapse() {
+      this.isCollapsed = !this.isCollapsed;
+      if (this.isCollapsed) {
+        this.menu[0].title = 'NHL';
+      } else {
+        this.menu[0].title = this.menuTitle;
+      }
+    },
   }
 }
 
