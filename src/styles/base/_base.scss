@@ -1,0 +1,20 @@
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+	font-family: $font-lato;
+	font-size: $font-size-h2;
+}
+
+a {
+  color: $brand-color;
+  text-decoration: none;
+}

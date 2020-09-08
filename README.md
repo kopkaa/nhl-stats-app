@@ -15,6 +15,12 @@ CLIENT
 Routy pro modul v modulu filename `router.js`, musi se pak importovat do main router.js
 
 
+API 
+https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/1.svg
+
+https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
+
+
 ---TO-DO----
 - Nastavit eslint
 - i18 lokalizace

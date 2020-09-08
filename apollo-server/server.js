@@ -1,5 +1,6 @@
 const { ApolloServer } = require('apollo-server')
 const ConferenceAPI = require('./API/DataSources/ConferenceAPI')
+const TeamAPI = require('./API/DataSources/TeamAPI')
 const schema = require('./API/Schema')
 
 
@@ -10,6 +11,8 @@ const server = new ApolloServer({
   dataSources: () => {
     return {
       conferenceAPI: new ConferenceAPI(),
+      teamAPI: new TeamAPI(),
+
     }
   },
 })

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import App from './App.vue';
 import router from './router';
 import AppMenu from './components/layout/AppMenu';
+import './styles/global.scss';
 import { createProvider } from './vue-apollo';
 
 

@@ -23,8 +23,10 @@ class TeamAPI extends RESTDataSource {
     const teams = await this.get(`?season=${season}`)
     return teams.teams.map( team => {
       team.season = season
+      team.logoUrl = `https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${team.id}.svg`
       return team
     })
+    
   }
 
   async returnRoster(id, season) {

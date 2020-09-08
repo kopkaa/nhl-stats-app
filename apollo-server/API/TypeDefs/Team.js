@@ -15,6 +15,7 @@ const Team = `
     stats: TeamStats
     statPositions: TeamStatsPositions
     season: Int
+    logoUrl: String
   }
 `
 

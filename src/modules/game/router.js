@@ -1,4 +1,4 @@
-import Games from './views/Games.vue';
+import Games from './components/Games.vue';
 
 
 const routes = [
