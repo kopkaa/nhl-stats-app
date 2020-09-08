@@ -38,7 +38,7 @@ export default {
         hiddenOnCOllapse: true
       },
       {
-        href: '/',
+        href: '/dashboard',
         title: 'Dashboard',
         icon: 'fa fa-home'
       },
@@ -48,9 +48,9 @@ export default {
         icon: 'fa fa-calendar'
       },
       {
-        href: '/tables',
-        title: 'Tabulky',
-        icon: 'fa fa-table'
+        href: '/teams',
+        title: 'Týmy',
+        icon: 'fa fa-users'
       },
     ]
   },

@@ -19,9 +19,3 @@ server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
 
-
-/*
-app.listen(3000);*/
-// export default app => {
-//   app.use('/files', express.static(path.resolve(__dirname, '../live/uploads')))
-// }

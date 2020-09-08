@@ -2,11 +2,17 @@ SERVER
 	- Apollo server
 	`npm run server`
 
+
+	Data Sources - nacitani dat z remote API
+	TypeDefs - Schema
+	Resolvers - pripojene na data sources ziskava data a definuje query.
 CLIENT
 	- Vue.js 
 	`npm run serve`
 	Apollo provider pro pripojeni na GraphQL API
 	GraphQL queries v slozce graphql
+
+Routy pro modul v modulu filename `router.js`, musi se pak importovat do main router.js
 
 
 ---TO-DO----

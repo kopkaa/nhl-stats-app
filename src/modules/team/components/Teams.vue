@@ -2,7 +2,7 @@
   <div class="apollo-example">
 
 
-  <div v-for="c in getConferences" :key="c.id">
+  <div v-for="c of conf" :key="c.id">
     {{c.name}}
    </div>
 
@@ -16,33 +16,25 @@
 import {CONFS} from '../graphql/Conference.js'
 
 export default {
-  name: 'Games',
+  name: 'Teams',
   data () {
     return {
-      confs: [],
+      conf: {},
     }
   },
 
-  apollo: {
-
-    getConferences: {
+  mounted(){
+    this.$apollo.query({
       query: CONFS,
-      loadingKey: 'loading',
-    },
-  },
+      update(data) {
+        return data.getConferences
+      }
+    }).then(data => {
+      console.log(data);
+        this.conf = data.data.getConferences
+    });
 
-  // mounted(){
-  //   this.$apollo.query({
-  //     query: CONFS,
-  //     update(data) {
-  //       return data.getConferences
-  //     }
-  //   }).then(data => {
-  //     console.log(data);
-  //       this.conf = data.data.getConferences
-  //   });
-
-  // }
+  }
 }
 
 </script>
