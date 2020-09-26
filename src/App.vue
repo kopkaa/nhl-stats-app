@@ -15,7 +15,7 @@
 export default {
   name: 'App',
 
-  created() {
+  created () {
     console.log('APP');
   },
 };

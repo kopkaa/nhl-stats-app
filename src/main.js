@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';

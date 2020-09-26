@@ -15,16 +15,19 @@
     "dependencies": {
         "apollo-datasource-rest": "^0.9.3",
         "apollo-server": "^2.16.1",
+        "babel-polyfill": "^6.26.0",
         "eslint-config-airbnb-base": "^14.2.0",
-        "graphql-tools": "^6.0.18",
+        "graphql-tools": "^6.2.3",
         "graphql-type-json": "^0.2.1",
         "lodash": "^4.17.20",
-        "vue": "^2.6.11",
+        "save": "^2.4.0",
+        "vue": "^2.6.12",
         "vue-apollo": "^3.0.0-beta.11",
         "vue-router": "^3.4.3",
         "vue-sidebar-menu": "^4.7.1"
     },
     "devDependencies": {
+        "@vue/cli-plugin-babel": "^4.4.6",
         "@vue/cli-service": "~4.4.0",
         "@vue/cli-shared-utils": "^4.5.4",
         "@vue/eslint-config-standard": "^5.1.2",

@@ -6,5 +6,6 @@ module.exports = {
     'no-console': 'warn',
     semi: 'error',
     'no-nested-ternary': 0,
+    'space-before-function-paren': ['error', 'always'],
   },
 };
