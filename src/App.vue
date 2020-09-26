@@ -1,10 +1,9 @@
 <template>
   <div id="app">
-
     <app-menu></app-menu>
-    <router-view/>
+    <router-view />
 
-  <!-- 
+    <!-- 
     <img alt="Vue logo" src="./assets/logo.png">
     <app-menu></app-menu>
     <ApolloExample msg="Welcome to Your Vue.js App"/>
@@ -13,16 +12,13 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
 
   created() {
     console.log('APP');
-  }
-}
-
-
+  },
+};
 </script>
 
 <style>

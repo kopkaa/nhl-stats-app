@@ -3,7 +3,6 @@ import Dashboard from '@/Dashboard.vue';
 import gameRoutes from '@/modules/game/router';
 import teamRoutes from '@/modules/team/router';
 
-
 const baseRoutes = [
   {
     path: '/dashboard',
