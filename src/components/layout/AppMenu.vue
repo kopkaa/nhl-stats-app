@@ -1,11 +1,22 @@
 <template>
   <div>
-  <sidebar-menu :menu="menu" @toggle-collapse="onToggleCollapse()" :collapsed="isCollapsed" :width="menuWidth">
-    <span slot="toggle-icon">
-      <i class="fa fa-arrow-right" v-if="isCollapsed"></i>
-      <i class="fa fa-arrow-left" v-if="!isCollapsed"></i>
-    </span>
-  </sidebar-menu>
+    <sidebar-menu
+      :menu="menu"
+      :collapsed="isCollapsed"
+      :width="menuWidth"
+      @toggle-collapse="onToggleCollapse()"
+    >
+      <span slot="toggle-icon">
+        <i
+          v-if="isCollapsed"
+          class="fa fa-arrow-right"
+        />
+        <i
+          v-if="!isCollapsed"
+          class="fa fa-arrow-left"
+        />
+      </span>
+    </sidebar-menu>
   </div>
 </template>
 
@@ -16,56 +27,56 @@ import 'vue-sidebar-menu/dist/vue-sidebar-menu.css';
 export default {
   name: 'AppMenu',
   components: {
-    SidebarMenu
+    SidebarMenu,
   },
-  
+
   data () {
     return {
       menuWidth: '20vw',
       isCollapsed: false,
       menuTitle: 'NHL - STATS APP',
       menu: [],
-    }
+    };
   },
 
-  created() {
+  created () {
     console.log('MENU CREATED');
     console.log(this.$router);
     this.menu = [
       {
         header: true,
         title: this.menuTitle,
-        hiddenOnCOllapse: true
+        hiddenOnCOllapse: true,
       },
       {
         href: '/dashboard',
         title: 'Dashboard',
-        icon: 'fa fa-home'
+        icon: 'fa fa-home',
       },
       {
         href: '/games',
         title: 'Zapasy',
-        icon: 'fa fa-calendar'
+        icon: 'fa fa-calendar',
       },
       {
         href: '/teams',
         title: 'Týmy',
-        icon: 'fa fa-users'
+        icon: 'fa fa-users',
       },
-    ]
+    ];
   },
 
   methods: {
-    onToggleCollapse() {
+    onToggleCollapse () {
       this.isCollapsed = !this.isCollapsed;
       if (this.isCollapsed) {
         this.menu[0].title = 'NHL';
-      } else {
+      }
+      else {
         this.menu[0].title = this.menuTitle;
       }
     },
-  }
-}
+  },
+};
 
 </script>
-

@@ -1,20 +1,23 @@
 <template>
   <div class="apollo-example">
-    <div v-for="c in getConferences" :key="c.id">
+    <div
+      v-for="c in getConferences"
+      :key="c.id"
+    >
       {{ c.name }}
     </div>
   </div>
 </template>
 
 <script>
-import { CONFS } from '../graphql/Conference.js'
+import { CONFS } from '../graphql/Conference';
 
 export default {
   name: 'Games',
-  data() {
+  data () {
     return {
       confs: [],
-    }
+    };
   },
 
   apollo: {
@@ -36,7 +39,7 @@ export default {
   //   });
 
   // }
-}
+};
 </script>
 
 <style scoped>

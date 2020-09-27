@@ -1,26 +1,23 @@
 <template>
   <div class="apollo-example">
-
-
-  <div v-for="t of getTeams" :key="t.id">
-    {{t.officialSiteUrl}}
-   </div>
-
-
-
-
+    <div
+      v-for="t of getTeams"
+      :key="t.id"
+    >
+      {{ t.officialSiteUrl }}
+    </div>
   </div>
 </template>
 
 <script>
-import {GET_TEAMS} from '../graphql/Team.js'
+import { GET_TEAMS } from '../graphql/Team.js';
 
 export default {
   name: 'Teams',
   data () {
     return {
       conf: {},
-    }
+    };
   },
 
   apollo: {
@@ -30,10 +27,9 @@ export default {
       loadingKey: 'loading',
       variables: {
         season: 20192020,
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};
 
 </script>
-
