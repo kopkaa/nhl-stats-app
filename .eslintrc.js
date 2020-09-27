@@ -4,8 +4,10 @@ module.exports = {
   rules: {
     'brace-style': [2, 'stroustrup'],
     'no-console': 'warn',
+    'no-tabs': 'warn',
     semi: 'error',
     'no-nested-ternary': 0,
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'space-before-function-paren': ['error', 'always'],
   },
 };

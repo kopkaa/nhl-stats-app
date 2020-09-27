@@ -1,4 +1,5 @@
 const path = require('path');
+
 module.exports = {
   pluginOptions: {
     apollo: {
@@ -7,15 +8,18 @@ module.exports = {
     },
   },
 
-  chainWebpack: config => {
+  transpileDependencies: [
+    'vuetify',
+  ],
+
+  chainWebpack: (config) => {
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal'];
-    types.forEach(type =>
-      addStyleResource(config.module.rule('scss').oneOf(type)),
-    );
+    // eslint-disable-next-line no-use-before-define
+    types.forEach((type) => addStyleResource(config.module.rule('scss').oneOf(type)));
   },
 };
 
-function addStyleResource(rule) {
+function addStyleResource (rule) {
   rule
     .use('style-resource')
     .loader('style-resources-loader')
