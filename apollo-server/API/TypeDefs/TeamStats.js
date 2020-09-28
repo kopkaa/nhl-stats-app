@@ -28,6 +28,6 @@ const TeamStats = `
     shootingPctg: Float,
     savePctg: Float
   }
-`
+`;
 
-module.exports = TeamStats
+module.exports = TeamStats;

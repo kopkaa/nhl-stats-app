@@ -7,6 +7,6 @@ const Division = `
 		active: Boolean
 		conference: Conference
   }
-`
+`;
 
-module.exports = Division
+module.exports = Division;

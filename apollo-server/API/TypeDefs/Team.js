@@ -17,6 +17,6 @@ const Team = `
     season: Int
     logoUrl: String
   }
-`
+`;
 
-module.exports = Team
+module.exports = Team;

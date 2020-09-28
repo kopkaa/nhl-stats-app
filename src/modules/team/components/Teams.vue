@@ -1,16 +1,26 @@
 <template>
-  <div class="apollo-example">
-    <div
-      v-for="t of getTeams"
-      :key="t.id"
-    >
-      {{ t.officialSiteUrl }}
-    </div>
-  </div>
+  <v-container class="pa-10">
+    <v-row no-gutters>
+      <v-col
+        v-for="(team, index) of getTeams"
+        :key="index"
+        cols="12"
+        sm="4"
+      >
+        <v-card
+          class="pa-3"
+          outlined
+          tile
+        >
+          {{ team.name }}
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import { GET_TEAMS } from '../graphql/Team.js';
+import { GET_TEAMS } from '../graphql/Team';
 
 export default {
   name: 'Teams',
@@ -29,6 +39,7 @@ export default {
         season: 20192020,
       },
     },
+
   },
 };
 

@@ -1,7 +1,7 @@
 import Router from 'vue-router';
-import Dashboard from '@/Dashboard.vue';
-import gameRoutes from '@/modules/game/router';
-import teamRoutes from '@/modules/team/router';
+import teamRoutes from './modules/team/router';
+import gameRoutes from './modules/game/router';
+import Dashboard from './views/Dashboard.vue';
 
 const baseRoutes = [{
   path: '/dashboard',

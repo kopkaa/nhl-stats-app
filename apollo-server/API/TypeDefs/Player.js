@@ -23,5 +23,5 @@ const Player = `
     position: String
     positionCode: String
   }
-`
-module.exports = Player
+`;
+module.exports = Player;

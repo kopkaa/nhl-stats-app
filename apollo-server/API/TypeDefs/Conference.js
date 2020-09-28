@@ -6,6 +6,6 @@ const Conference = `
 		shortName: String
 		active: Boolean
   }
-`
+`;
 
-module.exports = Conference
+module.exports = Conference;

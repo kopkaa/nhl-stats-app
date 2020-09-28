@@ -4,6 +4,6 @@ const TimeZone = `
 		offset: Int
 		tz: String
   }
-`
+`;
 
-module.exports = TimeZone
+module.exports = TimeZone;

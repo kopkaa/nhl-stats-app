@@ -32,7 +32,7 @@ export default {
 
   data () {
     return {
-      menuWidth: '20vw',
+      menuWidth: '15vw',
       isCollapsed: false,
       menuTitle: 'NHL - STATS APP',
       menu: [],
@@ -40,8 +40,6 @@ export default {
   },
 
   created () {
-    console.log('MENU CREATED');
-    console.log(this.$router);
     this.menu = [
       {
         header: true,
@@ -75,6 +73,7 @@ export default {
       else {
         this.menu[0].title = this.menuTitle;
       }
+      this.$emit('menuCollapsed', this.isCollapsed);
     },
   },
 };

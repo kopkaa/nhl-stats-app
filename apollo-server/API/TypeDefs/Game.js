@@ -11,6 +11,6 @@ const Game = `
     homeTeam: Team
     homeTeamScore: Int
   }
-`
+`;
 
-module.exports = Game
+module.exports = Game;

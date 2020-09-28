@@ -28,6 +28,6 @@ const TeamStatsPositions = `
     shootingPctRank: String,
     savePctRank: String
   }
-`
+`;
 
-module.exports = TeamStatsPositions
+module.exports = TeamStatsPositions;

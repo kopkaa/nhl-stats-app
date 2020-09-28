@@ -4,6 +4,6 @@ const Venue = `
 		city: String
 		timeZone: TimeZone
   }
-`
+`;
 
-module.exports = Venue
+module.exports = Venue;

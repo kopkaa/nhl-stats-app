@@ -12,6 +12,6 @@ const Query = `
 		getTeam(id: Int!, season: Int!): Team!,
 		getTeamByName(name: String!, season: Int!): Team!,
   }
-`
+`;
 
-module.exports = Query
+module.exports = Query;

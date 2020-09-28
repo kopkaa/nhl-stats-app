@@ -1,4 +1,4 @@
-
+@import '~vuetify/src/styles/main.sass';
 html {
   box-sizing: border-box;
 }
@@ -11,10 +11,14 @@ html {
 
 .hello {
 	font-family: 'Grandstander', cursive;
-	font-size: $font-size-h2;
+	font-size: 14px;
 }
 
 a {
-  color: $brand-color;
   text-decoration: none;
 }
+
+.fa .fa-arrow-left:hover {
+  cursor: pointer;
+}
+

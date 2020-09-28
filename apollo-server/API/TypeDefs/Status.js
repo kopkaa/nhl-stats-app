@@ -6,6 +6,6 @@ const Status = `
     statusCode: String
     startTimeTBD: Boolean
   }
-`
+`;
 
-module.exports = Status
+module.exports = Status;

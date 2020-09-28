@@ -8,6 +8,6 @@ const Schedule = `
     totalMatches: Int
     games: [Game]
   }
-`
+`;
 
-module.exports = Schedule
+module.exports = Schedule;
