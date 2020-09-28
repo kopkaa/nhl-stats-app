@@ -11,7 +11,8 @@
     </v-navigation-drawer>
 
     <v-main
-      class="main pa-0"
+      class="pa-0"
+      :class="{ menuCollapsed: isCollapsed, main: !isCollapsed}"
     >
       <router-view />
     </v-main>
@@ -46,8 +47,12 @@ export default {
 <style>
 .main {
   margin-left: 15vw;
-
 }
+
+.menuCollapsed {
+  margin-left: 5vw;
+}
+
 .v-application--wrap {
  background-color: #424242;
 }

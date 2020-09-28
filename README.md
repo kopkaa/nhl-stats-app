@@ -22,9 +22,9 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 
 
 ---TO-DO----
-- Nastavit eslint
+- Nastavit eslint / DONE
 - i18 lokalizace
-- Automaticky schovat menu kdyz se zmensuje okno.
+- Automaticky schovat menu kdyz se zmensuje okno / DONE
 - TABY
 
 Main Page

@@ -8,12 +8,11 @@
         sm="4"
       >
         <v-card
-          class="pa-3"
-          height="100%"
+          class="pa-3 ma-3"
         >
           <v-img
             :src="team.logoUrl"
-            class="white--text align-end"
+            class="white--text"
             height="100px"
             contain
           />
