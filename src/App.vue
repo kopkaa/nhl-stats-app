@@ -10,7 +10,9 @@
       <app-menu @menuCollapsed="menuCollapse" />
     </v-navigation-drawer>
 
-    <v-main class="main pa-0">
+    <v-main
+      class="main pa-0"
+    >
       <router-view />
     </v-main>
   </v-app>
@@ -26,7 +28,7 @@ export default {
   },
   computed: {
     navigatorWidth () {
-      return this.isCollapsed ? '4vw' : '15vw';
+      return this.isCollapsed ? '50px' : '15vw';
     },
   },
   created () {
@@ -44,6 +46,10 @@ export default {
 <style>
 .main {
   margin-left: 15vw;
+
+}
+.v-application--wrap {
+ background-color: #424242;
 }
 .v-navigation-drawer__content {
   background-color: #2A2A2E;

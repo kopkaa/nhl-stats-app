@@ -9,10 +9,14 @@
       >
         <v-card
           class="pa-3"
-          outlined
-          tile
+          height="100%"
         >
-          {{ team.name }}
+          <v-img
+            :src="team.logoUrl"
+            class="white--text align-end"
+            height="100px"
+            contain
+          />
         </v-card>
       </v-col>
     </v-row>

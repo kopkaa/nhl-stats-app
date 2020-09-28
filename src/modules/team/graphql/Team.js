@@ -8,5 +8,6 @@ export const GET_TEAMS = gql` query GetTeams($season: Int!) {
 		abbreviation
 		locationName
 		officialSiteUrl
+		logoUrl
 	}
 }`;
