@@ -1,0 +1,24 @@
+@import '~vuetify/src/styles/main.sass';
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.hello {
+	font-family: 'Grandstander', cursive;
+	font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.fa .fa-arrow-left:hover {
+  cursor: pointer;
+}
+
