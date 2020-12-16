@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { GET_TEAMS } from '../graphql/Team';
+import { GET_TEAMS } from '../model/Team';
 
 export default {
   name: 'Teams',

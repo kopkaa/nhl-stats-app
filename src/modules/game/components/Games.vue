@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { CONFS } from '../graphql/Conference';
+import { CONFS } from '../model/Conference';
 
 export default {
   name: 'Games',

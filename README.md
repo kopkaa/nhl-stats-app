@@ -10,9 +10,9 @@ CLIENT
 	- Vue.js 
 	`npm run serve`
 	Apollo provider pro pripojeni na GraphQL API
-	GraphQL queries v slozce graphql
+	GraphQL queries v slozce model
 
-Routy pro modul v modulu filename `router.js`, musi se pak importovat do main router.js
+Routy pro modul v modulu s nazvem  `router.js`, musi se pak importovat do main router.js
 
 
 API 
