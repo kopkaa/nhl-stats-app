@@ -52,6 +52,11 @@ export default {
         icon: 'fa fa-home',
       },
       {
+        href: '/tables',
+        title: 'Tabulky',
+        icon: 'fa fa-table',
+      },
+      {
         href: '/games',
         title: 'Zapasy',
         icon: 'fa fa-calendar',
