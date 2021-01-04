@@ -11,6 +11,9 @@ query GetTeams($season: Int!) {
 		officialSiteUrl
 		logoUrl
     stats {
+			gamesPlayed
+			wins
+			losses
       pts
     }
 	}

@@ -7,8 +7,11 @@
       :headers="headers"
       :items="getTeams"
       :items-per-page="getTeams.length"
-      height="calc(90vh - 120px)"
+      height="calc(100vh - 150px)"
       class="elevation-1"
+      dense
+      calculate-widths
+      hide-default-footer
     >
       <template
         v-slot:item.name="{item}"
@@ -34,13 +37,10 @@ export default {
     return {
       season: this.$currentSeason,
       headers: [
-        {
-          text: 'Name',
-          align: 'start',
-          sortable: false,
-          value: 'name',
-        },
-        { text: 'points', value: 'stats.pts' },
+        { text: 'Name', align: 'start', value: 'name' },
+        { text: 'games', align: 'start', value: 'stats.gamesPlayed' },
+        { text: 'wins', align: 'start', value: 'stats.wins' },
+        { text: 'points', align: 'start', value: 'stats.pts' },
 
       ],
       getTeams: '',

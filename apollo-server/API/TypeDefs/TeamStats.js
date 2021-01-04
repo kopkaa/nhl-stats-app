@@ -1,5 +1,6 @@
 const TeamStats = `
   type TeamStats {
+    gamesPlayed: Int,
     wins: Int,
     losses: Int,
     ot: Int,
