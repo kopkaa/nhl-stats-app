@@ -35,7 +35,7 @@ export default {
           sortable: false,
           value: 'name',
         },
-        { text: 'pts', value: 'points' },
+        { text: 'points', value: 'stats.pts' },
 
       ],
       getTeams: '',

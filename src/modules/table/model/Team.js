@@ -10,5 +10,8 @@ query GetTeams($season: Int!) {
 		locationName
 		officialSiteUrl
 		logoUrl
+    stats {
+      pts
+    }
 	}
 }`;
