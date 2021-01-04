@@ -1,9 +1,13 @@
 <template>
-  <div class="apollo-example">
+  <div
+    v-if="!$apollo.loading"
+    class="table table--main"
+  >
     <v-data-table
       :headers="headers"
       :items="getTeams"
       :items-per-page="getTeams.length"
+      height="calc(90vh - 120px)"
       class="elevation-1"
     >
       <template
@@ -28,6 +32,7 @@ export default {
   name: 'Tables',
   data () {
     return {
+      season: this.$currentSeason,
       headers: [
         {
           text: 'Name',
@@ -46,14 +51,16 @@ export default {
     getTeams: {
       query: GET_ALL_TEAMS,
       loadingKey: 'loading',
-      variables: {
-        season: 20192020,
+      variables () {
+        return {
+          season: this.season,
+        };
       },
     },
   },
 
   created () {
-    console.log('DATAA', this.getTeams);
+
   },
 };
 </script>

@@ -33,7 +33,7 @@ export default {
     },
   },
   created () {
-    console.log('APP');
+    console.log('APP', this.$season);
   },
   methods: {
     menuCollapse (value) {

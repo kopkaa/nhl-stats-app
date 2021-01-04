@@ -8,6 +8,7 @@ import { createProvider } from './vue-apollo';
 import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false;
+Vue.prototype.$currentSeason = 20202021;
 
 Vue.use(VueRouter);
 
