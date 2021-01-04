@@ -53,10 +53,4 @@ export default {
   margin-left: 5vw;
 }
 
-.v-application--wrap {
- background-color: #424242;
-}
-.v-navigation-drawer__content {
-  background-color: #2A2A2E;
-}
 </style>
