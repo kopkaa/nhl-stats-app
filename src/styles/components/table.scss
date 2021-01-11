@@ -1,8 +1,10 @@
 .table {
   &--main {
-    display: flex;
-    justify-content: center;
-    margin-top: 4rem;
+    flex: 100%;
+    &--wrapper {
+      display: flex;
+      margin: 2rem;
+    }
   }
 
   &__first-column {

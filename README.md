@@ -25,7 +25,16 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 - Nastavit eslint / DONE
 - i18 lokalizace
 - Automaticky schovat menu kdyz se zmensuje okno / DONE
-- TABY
+- Taby
+- Tabulky - vybirani custom sloupcu (checkbox)
+- Integrovat chart.js
+
+- Zapas
+
+ CALGARY X PITS
+
+ - last 5 matches
+ [chart.js] [chart.js] - s filtrovanim dat
 
 Main Page
 	-Nadchazejici zapasy
