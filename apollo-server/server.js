@@ -10,11 +10,11 @@ const server = new ApolloServer({
   schema,
   introspection: true,
   dataSources: () => ({
-    conferenceAPI: new ConferenceAPI(),
-    DivisionAPI: new DivisionAPI(),
-    PlayerAPI: new PlayerAPI(),
-    ScheduleAPI: new ScheduleAPI(),
-    teamAPI: new TeamAPI(),
+		playerAPI: new PlayerAPI(),
+		conferenceAPI: new ConferenceAPI(),
+		divisionAPI: new DivisionAPI(),
+		teamAPI: new TeamAPI(),
+		scheduleAPI: new ScheduleAPI()
 
   }),
 });
