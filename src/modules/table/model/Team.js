@@ -10,6 +10,10 @@ query GetTeams($season: Int!) {
 		locationName
 		officialSiteUrl
 		logoUrl
+		division {
+			id
+			name
+		}
     stats {
 			gamesPlayed
 			wins

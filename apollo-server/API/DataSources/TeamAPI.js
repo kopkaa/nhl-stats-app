@@ -24,7 +24,6 @@ class TeamAPI extends RESTDataSource {
     return teams.teams.map((team) => {
       team.season = season;
       team.logoUrl = `https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${team.id}.svg`;
-      console.log('TEAAM', team);
       return team;
     });
   }

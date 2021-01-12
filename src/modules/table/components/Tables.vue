@@ -5,14 +5,17 @@
   >
     <v-data-table
       :headers="headers"
-      :items="getTeams"
-      :items-per-page="getTeams.length"
-      height="calc(100vh - 150px)"
+      :items="division.atlantic.teams"
+      :items-per-page="division.atlantic.teams.length"
+      height="auto"
       class="table--main"
       dense
       calculate-widths
       hide-default-footer
     >
+      <template v-slot:header.name="{ header }">
+        <span>Centrální divize</span>
+      </template>
       <template
         v-slot:item.name="{item}"
       >
@@ -31,11 +34,31 @@
 <script>
 import { GET_ALL_TEAMS } from '../model/Team';
 
+const _ = require('lodash');
+
 export default {
   name: 'Tables',
   data () {
     return {
       season: this.$currentSeason,
+      division: {
+        north: {
+          id: 28,
+          teams: [],
+        },
+        atlantic: {
+          id: 26,
+          teams: [],
+        },
+        west: {
+          id: 27,
+          teams: [],
+        },
+        east: {
+          id: 25,
+          teams: [],
+        },
+      },
       headers: [
         { text: 'Name', align: 'start', value: 'name' },
         { text: 'games', align: 'start', value: 'stats.gamesPlayed' },
@@ -61,7 +84,29 @@ export default {
   },
 
   created () {
-
+    this.divisionTeams();
+    // console.log('NORTH teams', this.division.north.teams);
   },
+
+  methods: {
+    divisionTeams () {
+      this.division.north.teams = _.filter(this.getTeams, (team) => {
+        if (team.division.id === 28) return team;
+      });
+
+      this.division.atlantic.teams = _.filter(this.getTeams, (team) => {
+        if (team.division.id === 26) return team;
+      });
+
+      this.division.west.teams = _.filter(this.getTeams, (team) => {
+        if (team.division.id === 27) return team;
+      });
+
+      this.division.north.east = _.filter(this.getTeams, (team) => {
+        if (team.division.id === 25) return team;
+      });
+    },
+  },
+
 };
 </script>
