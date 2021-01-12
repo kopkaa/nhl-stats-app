@@ -3,7 +3,7 @@
     flex: 100%;
     &--wrapper {
       display: flex;
-      margin: 2rem;
+			margin: 2rem 2rem 7px 2rem;
     }
   }
 
@@ -11,4 +11,8 @@
     display: flex;
     align-items: center;
   }
+}
+
+.arrows {
+	text-align: center;
 }

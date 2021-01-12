@@ -22,3 +22,9 @@ a {
   cursor: pointer;
 }
 
+.wrapper {
+	&--center {
+		text-align: center;
+	}
+}
+

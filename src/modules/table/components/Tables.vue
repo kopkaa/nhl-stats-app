@@ -5,8 +5,8 @@
     >
       <v-data-table
         :headers="headers"
-        :items="division.atlantic.teams"
-        :items-per-page="division.atlantic.teams.length"
+        :items="selectedDivision.teams"
+        :items-per-page="8"
         height="auto"
         class="table--main"
         dense
@@ -14,7 +14,7 @@
         hide-default-footer
       >
         <template v-slot:header.name="{ header }">
-          <span>Centrální divize</span>
+          <span>{{ selectedDivision.name }}</span>
         </template>
         <template
           v-slot:item.name="{item}"
@@ -29,7 +29,15 @@
         </template>
       </v-data-table>
     </div>
-    <div
+    <div class="wrapper--center">
+      <v-icon aria-hidden="false">
+        mdi-arrow-left
+      </v-icon>
+      <v-icon aria-hidden="false">
+        mdi-arrow-right
+      </v-icon>
+    </div>
+    <!-- <div
       class="table table--main--wrapper"
     >
       <v-data-table
@@ -116,7 +124,7 @@
           </div>
         </template>
       </v-data-table>
-    </div>
+    </div> -->
   </main>
 </template>
 
@@ -133,6 +141,7 @@ export default {
       division: {
         north: {
           id: 28,
+          name: 'Severní Divize',
           teams: [],
         },
         atlantic: {
@@ -169,6 +178,12 @@ export default {
           season: this.season,
         };
       },
+    },
+  },
+
+  computed: {
+    selectedDivision () {
+      return this.division.north;
     },
   },
 
