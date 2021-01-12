@@ -1,34 +1,123 @@
 <template>
-  <div
-    v-if="!$apollo.loading"
-    class="table table--main--wrapper"
-  >
-    <v-data-table
-      :headers="headers"
-      :items="division.atlantic.teams"
-      :items-per-page="division.atlantic.teams.length"
-      height="auto"
-      class="table--main"
-      dense
-      calculate-widths
-      hide-default-footer
+  <main v-if="!$apollo.loading">
+    <div
+      class="table table--main--wrapper"
     >
-      <template v-slot:header.name="{ header }">
-        <span>Centrální divize</span>
-      </template>
-      <template
-        v-slot:item.name="{item}"
+      <v-data-table
+        :headers="headers"
+        :items="division.atlantic.teams"
+        :items-per-page="division.atlantic.teams.length"
+        height="auto"
+        class="table--main"
+        dense
+        calculate-widths
+        hide-default-footer
       >
-        <div class="table__first-column">
-          <img
-            :src="item.logoUrl"
-            width="35"
-          >
-          <span> {{ item.name }}</span>
-        </div>
-      </template>
-    </v-data-table>
-  </div>
+        <template v-slot:header.name="{ header }">
+          <span>Centrální divize</span>
+        </template>
+        <template
+          v-slot:item.name="{item}"
+        >
+          <div class="table__first-column">
+            <img
+              :src="item.logoUrl"
+              width="35"
+            >
+            <span> {{ item.name }}</span>
+          </div>
+        </template>
+      </v-data-table>
+    </div>
+    <div
+      class="table table--main--wrapper"
+    >
+      <v-data-table
+        :headers="headers"
+        :items="division.north.teams"
+        :items-per-page="division.north.teams.length"
+        height="auto"
+        class="table--main"
+        dense
+        calculate-widths
+        hide-default-footer
+      >
+        <template v-slot:header.name="{ header }">
+          <span>Severní divize</span>
+        </template>
+        <template
+          v-slot:item.name="{item}"
+        >
+          <div class="table__first-column">
+            <img
+              :src="item.logoUrl"
+              width="35"
+            >
+            <span> {{ item.name }}</span>
+          </div>
+        </template>
+      </v-data-table>
+    </div>
+
+    <div
+      class="table table--main--wrapper"
+    >
+      <v-data-table
+        :headers="headers"
+        :items="division.west.teams"
+        :items-per-page="division.west.teams.length"
+        height="auto"
+        class="table--main"
+        dense
+        calculate-widths
+        hide-default-footer
+      >
+        <template v-slot:header.name="{ header }">
+          <span>Západní divize</span>
+        </template>
+        <template
+          v-slot:item.name="{item}"
+        >
+          <div class="table__first-column">
+            <img
+              :src="item.logoUrl"
+              width="35"
+            >
+            <span> {{ item.name }}</span>
+          </div>
+        </template>
+      </v-data-table>
+    </div>
+    <div
+      class="table table--main--wrapper"
+    >
+      <v-data-table
+        :headers="headers"
+        :items="division.east.teams"
+        :items-per-page="division.east.teams.length"
+        height="auto"
+        class="table--main"
+        dense
+        calculate-widths
+        hide-default-footer
+      >
+        <template v-slot:header.name="{ header }">
+          <span>Východní divize</span>
+        </template>
+        <template
+          v-slot:item.name="{item}"
+        >
+          <div class="table__first-column">
+            <img
+              :src="item.logoUrl"
+              width="35"
+            >
+            <span> {{ item.name }}</span>
+          </div>
+        </template>
+      </v-data-table>
+    </div>
+  </main>
 </template>
 
 <script>
@@ -85,7 +174,6 @@ export default {
 
   created () {
     this.divisionTeams();
-    // console.log('NORTH teams', this.division.north.teams);
   },
 
   methods: {
@@ -102,7 +190,7 @@ export default {
         if (team.division.id === 27) return team;
       });
 
-      this.division.north.east = _.filter(this.getTeams, (team) => {
+      this.division.east.teams = _.filter(this.getTeams, (team) => {
         if (team.division.id === 25) return team;
       });
     },
