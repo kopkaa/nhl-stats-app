@@ -28,6 +28,8 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 - Taby
 - Tabulky - vybirani custom sloupcu (checkbox)
 - Integrovat chart.js
+- tabulky - vybrat si divize / vsechny tymy
+- switching mezi divizema + transition
 
 - Zapas
 

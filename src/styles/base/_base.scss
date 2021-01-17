@@ -25,6 +25,10 @@ a {
 .wrapper {
 	&--center {
 		text-align: center;
+
+		i:hover {
+			cursor: pointer;
+		}
 	}
 }
 

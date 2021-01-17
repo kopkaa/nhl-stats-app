@@ -38,10 +38,11 @@ export default {
       season: this.$currentSeason,
       headers: [
         { text: 'Name', align: 'start', value: 'name' },
-        { text: 'games', align: 'start', value: 'stats.gamesPlayed' },
-        { text: 'wins', align: 'start', value: 'stats.wins' },
-        { text: 'losses', align: 'start', value: 'stats.losses' },
-        { text: 'points', align: 'start', value: 'stats.pts' },
+        { text: 'GP', align: 'start', value: 'stats.gamesPlayed' },
+        { text: 'W', align: 'start', value: 'stats.wins' },
+        { text: 'L', align: 'start', value: 'stats.losses' },
+        { text: 'PTS', align: 'start', value: 'stats.pts' },
+        { text: 'goals', align: 'start', value: 'stats.goalsPerGame' },
 
       ],
       getTeams: '',

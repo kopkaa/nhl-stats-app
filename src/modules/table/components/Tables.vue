@@ -3,9 +3,12 @@
     <div
       class="table table--main--wrapper"
     >
+
       <v-data-table
         :headers="headers"
         :items="selectedDivision.teams"
+        :sort-by.sync="sortBy"
+        :sort-desc.sync="descSort"
         :items-per-page="8"
         height="auto"
         class="table--main"
@@ -13,9 +16,7 @@
         calculate-widths
         hide-default-footer
       >
-        <template v-slot:header.name="{ header }">
-          <span>{{ selectedDivision.name }}</span>
-        </template>
+
         <template
           v-slot:item.name="{item}"
         >
@@ -27,8 +28,21 @@
             <span> {{ item.name }}</span>
           </div>
         </template>
+
+      <template v-for="h in headers" v-slot:[`header.${h.value}`]="{ header }">
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <span v-if="h.value == 'name'">Severní divize</span>
+            <span v-else v-on="on">{{h.text}}</span>
+          </template>
+          <span>{{h.tooltip}}</span>
+        </v-tooltip>
+      </template>
+
       </v-data-table>
     </div>
+
+
     <div class="wrapper--center">
       <v-icon aria-hidden="false">
         mdi-arrow-left
@@ -159,13 +173,16 @@ export default {
       },
       headers: [
         { text: 'Name', align: 'start', value: 'name' },
-        { text: 'games', align: 'start', value: 'stats.gamesPlayed' },
-        { text: 'wins', align: 'start', value: 'stats.wins' },
-        { text: 'losses', align: 'start', value: 'stats.losses' },
-        { text: 'points', align: 'start', value: 'stats.pts' },
-
+        { text: 'GP', align: 'start', value: 'stats.gamesPlayed', tooltip: 'Games played' },
+        { text: 'W', align: 'start', value: 'stats.wins', tooltip: 'Wins' },
+        { text: 'L', align: 'start', value: 'stats.losses', tooltip: 'Losses' },
+        { text: 'PTS', align: 'start', value: 'stats.pts', tooltip: 'Points' },
+        { text: 'GPG', align: 'start', value: 'stats.goalsPerGame', tooltip: 'Goals per game'},
+        { text: 'G', align: 'start', value: 'stats.goalsAgainstPerGame', tooltip: 'Goals against per game' },
       ],
       getTeams: '',
+      descSort: true,
+      sortBy: 'stats.pts',
     };
   },
 

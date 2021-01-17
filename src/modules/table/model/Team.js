@@ -19,6 +19,8 @@ query GetTeams($season: Int!) {
 			wins
 			losses
       pts
+			goalsPerGame
+			goalsAgainstPerGame
     }
 	}
 }`;
