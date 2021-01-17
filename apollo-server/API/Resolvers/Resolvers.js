@@ -30,6 +30,7 @@ const Resolvers = {
       const promises = players.map(async (player) => await dataSources.playerAPI.returnPlayer(player.person.id));
       return Promise.all(promises);
     },
+    standing: async (parent, {}, { dataSources }) => await dataSources.standingAPI.returnStandings(parent.season),
     division: async (parent, {}, { dataSources }) => await dataSources.divisionAPI.returnDivision(parent.division.id),
     conference: async (parent, {}, { dataSources }) => await dataSources.conferenceAPI.returnConference(parent.conference.id),
     stats: async (parent, {}, { dataSources }) => await dataSources.teamAPI.returnStats(parent.id, parent.season),

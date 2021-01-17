@@ -4,6 +4,7 @@ const TeamAPI = require('./API/DataSources/TeamAPI');
 const DivisionAPI = require('./API/DataSources/DivisionAPI');
 const PlayerAPI = require('./API/DataSources/PlayerAPI');
 const ScheduleAPI = require('./API/DataSources/ScheduleAPI');
+const StandingAPI = require('./API/DataSources/StandingAPI');
 const schema = require('./API/Schema');
 
 const server = new ApolloServer({
@@ -14,8 +15,8 @@ const server = new ApolloServer({
 		conferenceAPI: new ConferenceAPI(),
 		divisionAPI: new DivisionAPI(),
 		teamAPI: new TeamAPI(),
-		scheduleAPI: new ScheduleAPI()
-
+		scheduleAPI: new ScheduleAPI(),
+		standingAPI: new StandingAPI()
   }),
 });
 

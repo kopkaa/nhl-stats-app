@@ -7,10 +7,11 @@ const Team = `
     locationName: String
     firstYearOfPlay: String
     division: Division
+    standing: Standing
     conference: Conference
     franchiseId: Int
     venue: Venue
-		officialSiteUrl: String
+	officialSiteUrl: String
     players:[Player]
     stats: TeamStats
     statPositions: TeamStatsPositions

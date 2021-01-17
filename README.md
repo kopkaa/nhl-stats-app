@@ -30,6 +30,7 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 - Integrovat chart.js
 - tabulky - vybrat si divize / vsechny tymy
 - switching mezi divizema + transition
+- Dashboard widgety
 
 - Zapas
 

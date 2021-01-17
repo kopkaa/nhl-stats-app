@@ -6,6 +6,7 @@ const Player = require('./TypeDefs/Player');
 const Schedule = require('./TypeDefs/Schedule');
 const Status = require('./TypeDefs/Status');
 const Team = require('./TypeDefs/Team');
+const Standing = require('./TypeDefs/Standing');
 const TeamStats = require('./TypeDefs/TeamStats');
 const TeamStatsPositions = require('./TypeDefs/TeamStatsPositions');
 const TimeZone = require('./TypeDefs/TimeZone');
@@ -23,6 +24,7 @@ const schema = makeExecutableSchema({
     Schedule,
     Status,
     Team,
+    Standing,
     TeamStats,
     TeamStatsPositions,
     TimeZone,
