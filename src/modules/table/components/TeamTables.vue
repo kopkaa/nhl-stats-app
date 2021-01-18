@@ -4,13 +4,21 @@
       class="table table--main--wrapper"
     >
       <div class="table__options">
-        <v-select
-          :items="items"
-          label="Divize"
-          background-color="secondary"
-          height="20"
-          rounded
-        />
+        <div class="table__options--item">
+          <label class="label">Divize</label>
+          <v-select
+            v-model="selectedDivision"
+            :items="divisions"
+            item-text="name"
+            item-value="title"
+            label="Divize"
+            background-color="secondary"
+            rounded
+            dense
+            return-object
+            single-line
+          />
+        </div>
       </div>
       <v-data-table
         :headers="headers"
@@ -72,25 +80,25 @@ export default {
   data () {
     return {
       season: this.$currentSeason,
-      division: [
+      divisions: [
         {
           title: 'north',
-          name: 'Severní Divize',
+          name: 'Severní',
           teams: [],
         },
         {
           title: 'atlantic',
-          name: 'Atlantická Divize',
+          name: 'Atlantická',
           teams: [],
         },
         {
           title: 'west',
-          name: 'Západní Divize',
+          name: 'Západní',
           teams: [],
         },
         {
           title: 'east',
-          name: 'Východní Divize',
+          name: 'Východní',
           teams: [],
         },
       ],
@@ -121,6 +129,7 @@ export default {
       getTeams: '',
       descSort: true,
       sortBy: 'stats.pts',
+      selectedDivision: null,
     };
   },
 
@@ -136,31 +145,32 @@ export default {
     },
   },
 
-  computed: {
-    selectedDivision () {
-      return this.division[0];
-    },
-  },
+  // computed: {
+  //   selectedDivision () {
+  //     return this.divisions[0];
+  //   },
+  // },
 
   created () {
+    this.selectedDivision = this.divisions[0];
     this.divisionTeams();
   },
 
   methods: {
     divisionTeams () {
-      this.division[0].teams = _.filter(this.getTeams, (team) => {
+      this.divisions[0].teams = _.filter(this.getTeams, (team) => {
         if (team.division.id === 28) return team;
       });
 
-      this.division[1].teams = _.filter(this.getTeams, (team) => {
+      this.divisions[1].teams = _.filter(this.getTeams, (team) => {
         if (team.division.id === 26) return team;
       });
 
-      this.division[2].teams = _.filter(this.getTeams, (team) => {
+      this.divisions[2].teams = _.filter(this.getTeams, (team) => {
         if (team.division.id === 27) return team;
       });
 
-      this.division[3].teams = _.filter(this.getTeams, (team) => {
+      this.divisions[3].teams = _.filter(this.getTeams, (team) => {
         if (team.division.id === 25) return team;
       });
     },
