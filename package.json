@@ -50,6 +50,5 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-	],
-	"proxy": "http://localhost:4000"
+	]
 }

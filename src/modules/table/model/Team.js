@@ -6,9 +6,6 @@ query GetTeams($season: Int!) {
 	getTeams(season: $season) {
 		name
 		teamName
-		abbreviation
-		locationName
-		officialSiteUrl
 		logoUrl
 		division {
 			id
@@ -18,9 +15,13 @@ query GetTeams($season: Int!) {
 			gamesPlayed
 			wins
 			losses
-      		pts
+			pts
 			goalsPerGame
 			goalsAgainstPerGame
     }
+		standing {
+			goalsScored
+			goalsAgainst
+		}
 	}
 }`;

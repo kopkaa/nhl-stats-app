@@ -28,6 +28,12 @@
         </template>
 
         <template
+          v-slot:[`item.score`]="{item}"
+        >
+          <span> {{ item.standing.goalsScored }}:{{ item.standing.goalsAgainst }}</span>
+        </template>
+
+        <template
           v-for="h in headers"
           v-slot:[`header.${h.value}`]="{ header }"
         >
@@ -188,10 +194,13 @@ export default {
           text: 'PTS', align: 'start', value: 'stats.pts', tooltip: 'Points',
         },
         {
-          text: 'GPG', align: 'start', value: 'stats.goalsPerGame', tooltip: 'Goals per game',
+          text: 'SC', align: 'start', value: 'score', tooltip: 'Score', sortable: false,
         },
         {
-          text: 'G', align: 'start', value: 'stats.goalsAgainstPerGame', tooltip: 'Goals against per game',
+          text: 'GS', align: 'start', value: 'stats.goalsPerGame', tooltip: 'Goals scored per game',
+        },
+        {
+          text: 'GA', align: 'start', value: 'stats.goalsAgainstPerGame', tooltip: 'Goals against per game',
         },
       ],
       getTeams: '',
