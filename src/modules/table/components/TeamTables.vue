@@ -3,6 +3,15 @@
     <div
       class="table table--main--wrapper"
     >
+      <div class="table__options">
+        <v-select
+          :items="items"
+          label="Divize"
+          background-color="secondary"
+          height="20"
+          rounded
+        />
+      </div>
       <v-data-table
         :headers="headers"
         :items="selectedDivision.teams"
@@ -39,7 +48,7 @@
         >
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
-              <span v-if="h.value == 'name'">Severní divize</span>
+              <span v-if="h.value == 'name'">{{ selectedDivision.name }}</span>
               <span
                 v-else
                 v-on="on"
@@ -50,103 +59,6 @@
         </template>
       </v-data-table>
     </div>
-
-    <div class="wrapper--center">
-      <v-icon aria-hidden="false">
-        mdi-arrow-left
-      </v-icon>
-      <v-icon aria-hidden="false">
-        mdi-arrow-right
-      </v-icon>
-    </div>
-    <!-- <div
-      class="table table--main--wrapper"
-    >
-      <v-data-table
-        :headers="headers"
-        :items="division.north.teams"
-        :items-per-page="division.north.teams.length"
-        height="auto"
-        class="table--main"
-        dense
-        calculate-widths
-        hide-default-footer
-      >
-        <template v-slot:header.name="{ header }">
-          <span>Severní divize</span>
-        </template>
-        <template
-          v-slot:item.name="{item}"
-        >
-          <div class="table__first-column">
-            <img
-              :src="item.logoUrl"
-              width="35"
-            >
-            <span> {{ item.name }}</span>
-          </div>
-        </template>
-      </v-data-table>
-    </div>
-
-    <div
-      class="table table--main--wrapper"
-    >
-      <v-data-table
-        :headers="headers"
-        :items="division.west.teams"
-        :items-per-page="division.west.teams.length"
-        height="auto"
-        class="table--main"
-        dense
-        calculate-widths
-        hide-default-footer
-      >
-        <template v-slot:header.name="{ header }">
-          <span>Západní divize</span>
-        </template>
-        <template
-          v-slot:item.name="{item}"
-        >
-          <div class="table__first-column">
-            <img
-              :src="item.logoUrl"
-              width="35"
-            >
-            <span> {{ item.name }}</span>
-          </div>
-        </template>
-      </v-data-table>
-    </div>
-    <div
-      class="table table--main--wrapper"
-    >
-      <v-data-table
-        :headers="headers"
-        :items="division.east.teams"
-        :items-per-page="division.east.teams.length"
-        height="auto"
-        class="table--main"
-        dense
-        calculate-widths
-        hide-default-footer
-      >
-        <template v-slot:header.name="{ header }">
-          <span>Východní divize</span>
-        </template>
-        <template
-          v-slot:item.name="{item}"
-        >
-          <div class="table__first-column">
-            <img
-              :src="item.logoUrl"
-              width="35"
-            >
-            <span> {{ item.name }}</span>
-          </div>
-        </template>
-      </v-data-table>
-    </div> -->
   </main>
 </template>
 
@@ -160,25 +72,28 @@ export default {
   data () {
     return {
       season: this.$currentSeason,
-      division: {
-        north: {
-          id: 28,
+      division: [
+        {
+          title: 'north',
           name: 'Severní Divize',
           teams: [],
         },
-        atlantic: {
-          id: 26,
+        {
+          title: 'atlantic',
+          name: 'Atlantická Divize',
           teams: [],
         },
-        west: {
-          id: 27,
+        {
+          title: 'west',
+          name: 'Západní Divize',
           teams: [],
         },
-        east: {
-          id: 25,
+        {
+          title: 'east',
+          name: 'Východní Divize',
           teams: [],
         },
-      },
+      ],
       headers: [
         { text: 'Name', align: 'start', value: 'name' },
         {
@@ -223,7 +138,7 @@ export default {
 
   computed: {
     selectedDivision () {
-      return this.division.north;
+      return this.division[0];
     },
   },
 
@@ -233,19 +148,19 @@ export default {
 
   methods: {
     divisionTeams () {
-      this.division.north.teams = _.filter(this.getTeams, (team) => {
+      this.division[0].teams = _.filter(this.getTeams, (team) => {
         if (team.division.id === 28) return team;
       });
 
-      this.division.atlantic.teams = _.filter(this.getTeams, (team) => {
+      this.division[1].teams = _.filter(this.getTeams, (team) => {
         if (team.division.id === 26) return team;
       });
 
-      this.division.west.teams = _.filter(this.getTeams, (team) => {
+      this.division[2].teams = _.filter(this.getTeams, (team) => {
         if (team.division.id === 27) return team;
       });
 
-      this.division.east.teams = _.filter(this.getTeams, (team) => {
+      this.division[3].teams = _.filter(this.getTeams, (team) => {
         if (team.division.id === 25) return team;
       });
     },

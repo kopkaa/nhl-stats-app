@@ -2,10 +2,20 @@
   &--main {
     flex: 100%;
     &--wrapper {
-      display: flex;
+			display: flex;
+			flex-direction: column;
 			margin: 2rem 2rem 7px 2rem;
-    }
-  }
+		}
+	}
+	
+	&__options {
+		display: flex;
+		flex-direction: row;
+
+		div {
+			flex-grow: 0;
+		}
+	}
 
   &__first-column {
     display: flex;
