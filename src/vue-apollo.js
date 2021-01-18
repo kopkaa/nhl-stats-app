@@ -12,7 +12,7 @@ Vue.use(VueApollo);
 const AUTH_TOKEN = 'apollo-token';
 
 // Http endpoint
-const httpEndpoint = 'http://localhost:4000/graphql';
+const httpEndpoint = '/graphql';
 
 // Config
 const defaultOptions = {

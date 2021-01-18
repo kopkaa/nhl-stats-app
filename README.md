@@ -41,16 +41,19 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 
 Main Page
 	-Nadchazejici zapasy
-	- Top 5 tymu
+		- detail
+		- three stars
+			- periods overview
+		- video highlights
+
+	- Top 5 tymu (podle zvolenych kriterii - default pts)
 	- Top 5 strelcu
 	- Strelci kteri nedali dlouho gol
 	- Tym co dlouho nevyhral
 	- Tym kteremu se dari
+	
 Menu
 	- Zapasy
-		- Tymy 
-		- Hraci
-		- Nadchazejici 
 	- Tymy
 	- Hraci
 	- Tabulky

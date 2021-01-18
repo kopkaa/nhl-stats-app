@@ -1,6 +1,8 @@
 const Standing = `
   type Standing {
-    standingsType: String
+		goalsScored: Int
+		goalsAgainst: Int
+		ot: Int
   }
 `;
 
