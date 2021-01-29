@@ -1,5 +1,5 @@
 <template>
-  <main v-if="!loading">
+  <main>
     <div
       class="table table--main--wrapper"
     >
@@ -30,6 +30,7 @@
         class="table--main"
         no-data-text="No data to display"
         dense
+        :loading="$apollo.queries.getTeams.loading"
         calculate-widths
         hide-default-footer
       >
@@ -129,8 +130,8 @@ export default {
       ],
       descSort: true,
       sortBy: 'stats.pts',
-      selectedDivision: null,
-      loading: false,
+      selectedDivision: '',
+      loading: true,
     };
   },
 
@@ -152,7 +153,7 @@ export default {
 
   async created () {
     await this.fetchData();
-    this.loading = false;
+    this.selectedDivision = this.divisions[0];
   },
 
   mounted () {
@@ -164,7 +165,6 @@ export default {
       this.$apollo.queries.getTeams.skip = false;
       this.$apollo.queries.getTeams.refetch().then((results) => {
         this.divisionTeams();
-        this.selectedDivision = this.divisions[0];
       });
     },
     divisionTeams () {
