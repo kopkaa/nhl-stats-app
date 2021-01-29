@@ -22,10 +22,10 @@
       </div>
       <v-data-table
         :headers="headers"
-        :items="selectedDivision.teams"
+        :items="tableTeams"
         :sort-by.sync="sortBy"
         :sort-desc.sync="descSort"
-        :items-per-page="8"
+        :items-per-page="31"
         height="auto"
         class="table--main"
         no-data-text="No data to display"
@@ -84,23 +84,32 @@ export default {
       season: this.$currentSeason,
       divisions: [
         {
+          id: 28,
           title: 'north',
           name: 'Severní',
           teams: [],
         },
         {
+          id: 26,
           title: 'atlantic',
           name: 'Atlantická',
           teams: [],
         },
         {
+          id: 27,
           title: 'west',
           name: 'Západní',
           teams: [],
         },
         {
+          id: 25,
           title: 'east',
           name: 'Východní',
+          teams: [],
+        },
+        {
+          title: 'all',
+          name: 'Všechny týmy',
           teams: [],
         },
       ],
@@ -130,8 +139,8 @@ export default {
       ],
       descSort: true,
       sortBy: 'stats.pts',
+      teams: [],
       selectedDivision: '',
-      loading: true,
     };
   },
 
@@ -151,37 +160,28 @@ export default {
     },
   },
 
+  computed: {
+    tableTeams () {
+      if (this.selectedDivision.id) {
+        const selectedTeams = _.filter(this.teams, (team) => {
+          if (team.division.id === this.selectedDivision.id) return team;
+        });
+        return selectedTeams;
+      }
+      return this.teams;
+    },
+  },
+
   async created () {
     await this.fetchData();
     this.selectedDivision = this.divisions[0];
-  },
-
-  mounted () {
-
   },
 
   methods: {
     fetchData () {
       this.$apollo.queries.getTeams.skip = false;
       this.$apollo.queries.getTeams.refetch().then((results) => {
-        this.divisionTeams();
-      });
-    },
-    divisionTeams () {
-      this.divisions[0].teams = _.filter(this.getTeams, (team) => {
-        if (team.division.id === 28) return team;
-      });
-
-      this.divisions[1].teams = _.filter(this.getTeams, (team) => {
-        if (team.division.id === 26) return team;
-      });
-
-      this.divisions[2].teams = _.filter(this.getTeams, (team) => {
-        if (team.division.id === 27) return team;
-      });
-
-      this.divisions[3].teams = _.filter(this.getTeams, (team) => {
-        if (team.division.id === 25) return team;
+        this.teams = results.data.getTeams;
       });
     },
   },
