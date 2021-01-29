@@ -39,7 +39,8 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
  - last 5 matches
  [chart.js] [chart.js] - s filtrovanim dat
 
-Tabulka -doma x venku
+Tabulky
+	Tabulka -doma x venku
 
 Main Page
 	-Nadchazejici zapasy
