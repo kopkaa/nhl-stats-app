@@ -41,6 +41,7 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 
 Main Page
 	-Nadchazejici zapasy
+	- Odehrane zapasy
 		- detail
 		- three stars
 			- periods overview

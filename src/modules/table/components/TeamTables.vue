@@ -1,5 +1,5 @@
 <template>
-  <main v-if="!$apollo.loading">
+  <main v-if="!loading">
     <div
       class="table table--main--wrapper"
     >
@@ -28,6 +28,7 @@
         :items-per-page="8"
         height="auto"
         class="table--main"
+        no-data-text="No data to display"
         dense
         calculate-widths
         hide-default-footer
@@ -126,10 +127,10 @@ export default {
           text: 'GA', align: 'start', value: 'stats.goalsAgainstPerGame', tooltip: 'Goals against per game',
         },
       ],
-      getTeams: '',
       descSort: true,
       sortBy: 'stats.pts',
       selectedDivision: null,
+      loading: false,
     };
   },
 
@@ -142,21 +143,30 @@ export default {
           season: this.season,
         };
       },
+
+      skip () {
+        return true;
+      },
     },
   },
 
-  // computed: {
-  //   selectedDivision () {
-  //     return this.divisions[0];
-  //   },
-  // },
+  async created () {
+    await this.fetchData();
+    this.loading = false;
+  },
 
-  created () {
-    this.selectedDivision = this.divisions[0];
-    this.divisionTeams();
+  mounted () {
+
   },
 
   methods: {
+    fetchData () {
+      this.$apollo.queries.getTeams.skip = false;
+      this.$apollo.queries.getTeams.refetch().then((results) => {
+        this.divisionTeams();
+        this.selectedDivision = this.divisions[0];
+      });
+    },
     divisionTeams () {
       this.divisions[0].teams = _.filter(this.getTeams, (team) => {
         if (team.division.id === 28) return team;
