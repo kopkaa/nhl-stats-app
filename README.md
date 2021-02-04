@@ -1,12 +1,14 @@
-SERVER
-	- Apollo server
+The application is showing team statistics, tables, info about players and matches from free NHL API. 
+
+### SERVER
+	- Server is using [Apollo Server]:https://www.apollographql.com/docs/apollo-server/
 	`npm run server`
 
 
 	Data Sources - nacitani dat z remote API
 	TypeDefs - Schema
 	Resolvers - pripojene na data sources ziskava data a definuje query.
-CLIENT
+### CLIENT
 	- Vue.js 
 	`npm run serve`
 	Apollo provider pro pripojeni na GraphQL API
