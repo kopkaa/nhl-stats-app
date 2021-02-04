@@ -1,13 +1,11 @@
 The application is showing team statistics, tables, info about players and matches from free NHL API. 
 
 ### SERVER
-	- Server is using [Apollo Server]:https://www.apollographql.com/docs/apollo-server/
+Server is built with GraphQL server [Apollo Server]:https://www.apollographql.com/docs/apollo-server/
 	`npm run server`
 
 
-	Data Sources - nacitani dat z remote API
-	TypeDefs - Schema
-	Resolvers - pripojene na data sources ziskava data a definuje query.
+
 ### CLIENT
 	- Vue.js 
 	`npm run serve`
@@ -16,6 +14,11 @@ The application is showing team statistics, tables, info about players and match
 
 Routy pro modul v modulu s nazvem  `router.js`, musi se pak importovat do main router.js
 
+| Name        	| Description   | 	|
+| ------------- |:-------------:| -----:|
+| Team tables by division      | showing team tables by division | ☑️ |
+| Tabs      | Supporting tabs      | ❌ |
+| Widgets | On dashboard user can select custom widgets     |    ❌ |
 
 API 
 https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/1.svg
