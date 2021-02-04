@@ -1,13 +1,14 @@
 The application is showing team statistics, tables, info about players and matches from free NHL API. 
 
 ### SERVER
-Server is built with GraphQL server [Apollo Server]:https://www.apollographql.com/docs/apollo-server/
+Server is built with GraphQL server [Apollo Server](https://www.apollographql.com/docs/apollo-server/) <br><br>
 	`npm run server`
 
 
 
 ### CLIENT
-	- Vue.js 
+Client is using Vue.js library for connecting to GraphQL server and fetching data it's using [Vue-Apollo Library](https://apollo.vuejs.org/)
+
 	`npm run serve`
 	Apollo provider pro pripojeni na GraphQL API
 	GraphQL queries v slozce model
