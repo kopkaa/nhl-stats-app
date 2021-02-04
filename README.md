@@ -37,6 +37,7 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 - tabulky - vybrat si divize / vsechny tymy
 - switching mezi divizema + transition
 - Dashboard widgety
+- custom skript na prepocitani vzdalenosti od menu - pridat dynamicky styl/classu
 
 - Zapas
 

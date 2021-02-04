@@ -1,7 +1,9 @@
 <template>
-  <div class="hello">
-    Dashboard
-  </div>
+  <main class="dashboard wrapper--main">
+    <div class="title">
+      NHL STATS
+    </div>
+  </main>
 </template>
 
 <script>

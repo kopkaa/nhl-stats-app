@@ -57,6 +57,11 @@ export default {
         icon: 'mdi mdi-table-large',
       },
       {
+        href: '/teams',
+        title: 'Týmy',
+        icon: 'mdi mdi-account-group',
+      },
+      {
         href: '/players',
         title: 'Hráči',
         icon: 'mdi mdi-hockey-puck',
@@ -65,11 +70,6 @@ export default {
         href: '/games',
         title: 'Zapasy',
         icon: 'mdi mdi-calendar',
-      },
-      {
-        href: '/teams',
-        title: 'Týmy',
-        icon: 'mdi mdi-account-group',
       },
     ];
   },

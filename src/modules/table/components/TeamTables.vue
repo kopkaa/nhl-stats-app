@@ -1,7 +1,7 @@
 <template>
   <main>
     <div
-      class="table table--main--wrapper"
+      class="table wrapper--main"
     >
       <div class="table__options">
         <div class="table__options--item">

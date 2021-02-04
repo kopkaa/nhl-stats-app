@@ -30,5 +30,20 @@ a {
 			cursor: pointer;
 		}
 	}
+
+	&--main {
+			display: flex;
+			flex-direction: column;
+			padding: 2rem 2rem 7px 2rem;
+			height: 100%;
+	}
+}
+
+.main {
+  margin-left: 15vw;
+}
+
+.menuCollapsed {
+	margin-left: 5vw;
 }
 

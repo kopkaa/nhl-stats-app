@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'App',
   data () {
@@ -43,14 +44,3 @@ export default {
 
 };
 </script>
-
-<style>
-.main {
-  margin-left: 15vw;
-}
-
-.menuCollapsed {
-  margin-left: 5vw;
-}
-
-</style>
