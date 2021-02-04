@@ -9,11 +9,11 @@
       <span slot="toggle-icon">
         <i
           v-if="isCollapsed"
-          class="fa fa-arrow-right"
+          class="mdi mdi-arrow-right"
         />
         <i
           v-if="!isCollapsed"
-          class="fa fa-arrow-left"
+          class="mdi mdi-arrow-left"
         />
       </span>
     </sidebar-menu>
@@ -49,22 +49,27 @@ export default {
       {
         href: '/dashboard',
         title: 'Dashboard',
-        icon: 'fa fa-home',
+        icon: 'mdi mdi-view-dashboard',
       },
       {
         href: '/tables',
         title: 'Tabulky',
-        icon: 'fa fa-table',
+        icon: 'mdi mdi-table-large',
+      },
+      {
+        href: '/players',
+        title: 'Hráči',
+        icon: 'mdi mdi-hockey-puck',
       },
       {
         href: '/games',
         title: 'Zapasy',
-        icon: 'fa fa-calendar',
+        icon: 'mdi mdi-calendar',
       },
       {
         href: '/teams',
         title: 'Týmy',
-        icon: 'fa fa-users',
+        icon: 'mdi mdi-account-group',
       },
     ];
   },
