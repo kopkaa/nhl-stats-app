@@ -7,16 +7,23 @@
         cols="12"
         sm="4"
       >
-        <v-card
-          class="pa-3 ma-3"
-        >
-          <v-img
-            :src="team.logoUrl"
-            class="white--text"
-            height="100px"
-            contain
-          />
-        </v-card>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-card
+              class="pa-3 ma-3"
+              v-on="on"
+            >
+              <v-img
+                :src="team.logoUrl"
+                class="card__team"
+                height="100px"
+                contain
+                @click="detailPage(team.id)"
+              />
+            </v-card>
+          </template>
+          <span>{{ team.name }}</span>
+        </v-tooltip>
       </v-col>
     </v-row>
   </v-container>
@@ -43,6 +50,17 @@ export default {
       },
     },
 
+  },
+
+  created () {
+
+  },
+
+  methods: {
+    detailPage (id) {
+      console.log('IDD', id);
+      this.$router.push({ name: 'team-detail', params: { id } });
+    },
   },
 };
 

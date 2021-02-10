@@ -34,7 +34,7 @@ export default {
     },
   },
   created () {
-    console.log('APP', this.$season);
+    console.log('🏒 NHL Season: ', this.$currentSeason);
   },
   methods: {
     menuCollapse (value) {
