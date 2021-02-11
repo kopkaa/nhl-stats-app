@@ -45,15 +45,16 @@ export default {
     getTeams: {
       query: GET_TEAMS,
       loadingKey: 'loading',
-      variables: {
-        season: 20192020,
+      variables () {
+        return {
+          season: this.$currentSeason,
+        };
       },
     },
 
   },
 
   created () {
-
   },
 
   methods: {

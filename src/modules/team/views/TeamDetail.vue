@@ -7,6 +7,12 @@
 <script>
 
 export default {
+  name: 'TeamDetail',
+  data () {
+    return {
+
+    };
+  },
 
 };
 </script>

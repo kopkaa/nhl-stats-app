@@ -78,7 +78,6 @@ export default {
   name: 'Tables',
   data () {
     return {
-      season: this.$currentSeason,
       divisions: [
         {
           id: 28,
@@ -147,7 +146,7 @@ export default {
       loadingKey: 'loading',
       variables () {
         return {
-          season: this.season,
+          season: this.$currentSeason,
         };
       },
 
