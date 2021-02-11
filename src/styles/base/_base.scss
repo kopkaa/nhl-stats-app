@@ -9,35 +9,22 @@ html {
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none;
+	color: $light-grey!important;
+}
+
+
 .hello {
 	font-family: 'Grandstander', cursive;
 	font-size: 14px;
-}
-
-a {
-  text-decoration: none;
 }
 
 .fa .fa-arrow-left:hover {
   cursor: pointer;
 }
 
-.wrapper {
-	&--center {
-		text-align: center;
 
-		i:hover {
-			cursor: pointer;
-		}
-	}
-
-	&--main {
-			display: flex;
-			flex-direction: column;
-			padding: 2rem 2rem 7px 2rem;
-			height: 100%;
-	}
-}
 
 .main {
   margin-left: 15vw;

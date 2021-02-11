@@ -18,7 +18,7 @@
                 class="card__team"
                 height="100px"
                 contain
-                @click="detailPage(team.id)"
+                @click="openDetail(team.id)"
               />
             </v-card>
           </template>
@@ -57,8 +57,7 @@ export default {
   },
 
   methods: {
-    detailPage (id) {
-      console.log('IDD', id);
+    openDetail (id) {
       this.$router.push({ name: 'team-detail', params: { id } });
     },
   },

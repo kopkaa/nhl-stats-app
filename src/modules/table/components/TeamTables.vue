@@ -1,8 +1,6 @@
 <template>
   <main>
-    <div
-      class="table wrapper--main"
-    >
+    <v-container class="pa-10">
       <div class="table__options">
         <div class="table__options--item">
           <label class="label">Divize</label>
@@ -27,7 +25,6 @@
         :sort-desc.sync="descSort"
         :items-per-page="31"
         height="auto"
-        class="table--main"
         no-data-text="No data to display"
         dense
         :loading="$apollo.queries.getTeams.loading"
@@ -42,7 +39,7 @@
               :src="item.logoUrl"
               width="35"
             >
-            <span> {{ item.name }}</span>
+            <a @click="openDetail(item.id)"> {{ item.name }}</a>
           </div>
         </template>
 
@@ -68,7 +65,7 @@
           </v-tooltip>
         </template>
       </v-data-table>
-    </div>
+    </v-container>
   </main>
 </template>
 
@@ -183,6 +180,10 @@ export default {
       this.$apollo.queries.getTeams.refetch().then((results) => {
         this.teams = results.data.getTeams;
       });
+    },
+
+    openDetail (id) {
+      this.$router.push({ name: 'team-detail', params: { id } });
     },
   },
 

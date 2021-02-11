@@ -1,9 +1,9 @@
 <template>
-  <main class="dashboard wrapper--main">
+  <v-container class="dashboard pa-10">
     <div class="title">
       NHL STATS
     </div>
-  </main>
+  </v-container>
 </template>
 
 <script>

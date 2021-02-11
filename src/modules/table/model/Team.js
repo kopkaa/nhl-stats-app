@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 export const GET_ALL_TEAMS = gql` 
 query GetTeams($season: Int!) {
 	getTeams(season: $season) {
+		id
 		name
 		teamName
 		logoUrl

@@ -49,6 +49,11 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 Tabulky
 	Tabulka -doma x venku
 
+TeamDetailPage
+	- rozvrh
+	- stats
+	- soupiska
+
 Main Page
 	-Nadchazejici zapasy
 	- Odehrane zapasy
