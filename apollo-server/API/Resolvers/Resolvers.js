@@ -1,22 +1,22 @@
 /* eslint-disable no-empty-pattern */
-/* eslint-disable no-return-await */
+/* eslint-disable no-return- */
 /* eslint-disable max-len */
 const validateSeasons = require('../../utils/season.js');
 const validateDates = require('../../utils/dates.js');
 
 const Resolvers = {
   Player: {
-    team: async (parent, {}, { dataSources }) => {
+    team: (parent, {}, { dataSources }) => {
       if (parent.active === false) return;
-      return await dataSources.teamAPI.returnTeam(parent.currentTeam.id, parent.season);
+      return dataSources.teamAPI.returnTeam(parent.currentTeam.id, parent.season);
     },
   },
   Schedule: {
-    games: async (parent, {}, { dataSources }) => {
-      const games = await dataSources.scheduleAPI.returnGames(parent.teamId, parent.date);
-      const gamesWithTeams = games.map(async (game) => {
-        const awayTeam = await dataSources.teamAPI.returnTeam(game.awayTeamId, game.season);
-        const homeTeam = await dataSources.teamAPI.returnTeam(game.homeTeamId, game.season);
+    games: (parent, {}, { dataSources }) => {
+      const games = dataSources.scheduleAPI.returnGames(parent.teamId, parent.date);
+      const gamesWithTeams = games.map((game) => {
+        const awayTeam = dataSources.teamAPI.returnTeam(game.awayTeamId, game.season);
+        const homeTeam = dataSources.teamAPI.returnTeam(game.homeTeamId, game.season);
         game.awayTeam = awayTeam;
         game.homeTeam = homeTeam;
         return game;
@@ -25,27 +25,27 @@ const Resolvers = {
     },
   },
   Team: {
-    players: async (parent, {}, { dataSources }) => {
-      const players = await dataSources.teamAPI.returnRoster(parent.id, parent.season);
-      const promises = players.map(async (player) => await dataSources.playerAPI.returnPlayer(player.person.id));
+    players: (parent, {}, { dataSources }) => {
+      const players = dataSources.teamAPI.returnRoster(parent.id, parent.season);
+      const promises = players.map((player) => dataSources.playerAPI.returnPlayer(player.person.id));
       return Promise.all(promises);
     },
-    standing: async (parent, {}, { dataSources }) => await dataSources.standingAPI.returnStandings(parent.id, parent.season),
-    division: async (parent, {}, { dataSources }) => await dataSources.divisionAPI.returnDivision(parent.division.id),
-    conference: async (parent, {}, { dataSources }) => await dataSources.conferenceAPI.returnConference(parent.conference.id),
-    stats: async (parent, {}, { dataSources }) => await dataSources.teamAPI.returnStats(parent.id, parent.season),
-    statPositions: async (parent, {}, { dataSources }) => await dataSources.teamAPI.returnStatPositions(parent.id, parent.season),
+    standing: (parent, {}, { dataSources }) => dataSources.standingAPI.returnStandings(parent.id, parent.season),
+    division: (parent, {}, { dataSources }) => dataSources.divisionAPI.returnDivision(parent.division.id),
+    conference: (parent, {}, { dataSources }) => dataSources.conferenceAPI.returnConference(parent.conference.id),
+    stats: (parent, {}, { dataSources }) => dataSources.teamAPI.returnStats(parent.id, parent.season),
+    statPositions: (parent, {}, { dataSources }) => dataSources.teamAPI.returnStatPositions(parent.id, parent.season),
   },
   Query: {
-    getPlayer: async (_, { id, season }, { dataSources }) => {
+    getPlayer: (_, { id, season }, { dataSources }) => {
       validateSeasons(season);
-      return await dataSources.playerAPI.returnPlayer(id, season);
+      return dataSources.playerAPI.returnPlayer(id, season);
     },
-    getPlayersByName: async (_, { name, season }, { dataSources }) => {
+    getPlayersByName: (_, { name, season }, { dataSources }) => {
       validateSeasons(season);
-      const teams = await dataSources.teamAPI.returnTeams(season);
-      const promises = teams.map(async (team) => await dataSources.teamAPI.returnRoster(team.id, season));
-      const allPlayers = await Promise.all(promises);
+      const teams = dataSources.teamAPI.returnTeams(season);
+      const promises = teams.map((team) => dataSources.teamAPI.returnRoster(team.id, season));
+      const allPlayers = Promise.all(promises);
 
       const playerList = allPlayers.reduce((accumulater, team) => [
         ...accumulater,
@@ -54,33 +54,33 @@ const Resolvers = {
 
       const shortRoster = playerList.filter((player) => player.person.fullName.toLowerCase().includes(name.toLowerCase()));
 
-      const listPromsies = shortRoster.map(async (player) => await dataSources.playerAPI.returnPlayer(player.person.id, season));
-      return await Promise.all(listPromsies);
+      const listPromsies = shortRoster.map((player) => dataSources.playerAPI.returnPlayer(player.person.id, season));
+      return Promise.all(listPromsies);
     },
-    getSchedule: async (_, { startDate, endDate }, { dataSources }) => {
+    getSchedule: (_, { startDate, endDate }, { dataSources }) => {
       const scheduleDate = validateDates(startDate, endDate);
-      return await dataSources.scheduleAPI.returnSchedule(scheduleDate.startDate, scheduleDate.endDate);
+      return dataSources.scheduleAPI.returnSchedule(scheduleDate.startDate, scheduleDate.endDate);
     },
-    getScheduleByTeam: async (_, { teamId, startDate, endDate }, { dataSources }) => {
+    getScheduleByTeam: (_, { teamId, startDate, endDate }, { dataSources }) => {
       const scheduleDate = validateDates(startDate, endDate);
-      return await dataSources.scheduleAPI.returnScheduleByTeam(teamId, scheduleDate.startDate, scheduleDate.endDate);
+      return dataSources.scheduleAPI.returnScheduleByTeam(teamId, scheduleDate.startDate, scheduleDate.endDate);
     },
-    getTeams: async (_, { season }, { dataSources }) => {
+    getTeams: (_, { season }, { dataSources }) => {
       validateSeasons(season);
-      return await dataSources.teamAPI.returnTeams(season);
+      return dataSources.teamAPI.returnTeams(season);
     },
-    getTeam: async (_, { id, season }, { dataSources }) => {
+    getTeam: (_, { id, season }, { dataSources }) => {
       validateSeasons(season);
-      return await dataSources.teamAPI.returnTeam(id, season);
+      return dataSources.teamAPI.returnTeam(id, season);
     },
-    getTeamByName: async (_, { name, season }, { dataSources }) => {
+    getTeamByName: (_, { name, season }, { dataSources }) => {
       validateSeasons(season);
-      return await dataSources.teamAPI.returnTeamByName(name, season);
+      return dataSources.teamAPI.returnTeamByName(name, season);
     },
-    getDivisions: async (_, {}, { dataSources }) => await dataSources.divisionAPI.returnDivisions(),
-    getDivision: async (_, { id }, { dataSources }) => await dataSources.divisionAPI.returnDivision(id),
-    getConferences: async (_, {}, { dataSources }) => await dataSources.conferenceAPI.returnConferences(),
-    getConference: async (_, { id }, { dataSources }) => await dataSources.conferenceAPI.returnConference(id),
+    getDivisions: (_, {}, { dataSources }) => dataSources.divisionAPI.returnDivisions(),
+    getDivision: (_, { id }, { dataSources }) => dataSources.divisionAPI.returnDivision(id),
+    getConferences: (_, {}, { dataSources }) => dataSources.conferenceAPI.returnConferences(),
+    getConference: (_, { id }, { dataSources }) => dataSources.conferenceAPI.returnConference(id),
   },
 };
 

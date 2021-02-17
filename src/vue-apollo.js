@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueApollo from 'vue-apollo';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import {
   createApolloClient,
   restartWebsockets,
@@ -13,6 +14,8 @@ const AUTH_TOKEN = 'apollo-token';
 
 // Http endpoint
 const httpEndpoint = 'http://localhost:4000/graphql';
+
+const memCache = new InMemoryCache();
 
 // Config
 const defaultOptions = {
@@ -37,7 +40,7 @@ const defaultOptions = {
   // link: myLink
 
   // Override default cache
-  // cache: myCache
+  cache: memCache,
 
   // Override the way the Authorization header is set
   // getAuth: (tokenName) => ...

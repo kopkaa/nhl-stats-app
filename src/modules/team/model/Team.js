@@ -13,12 +13,15 @@ export const GET_TEAMS = gql` query GetTeams($season: Int!) {
 	}
 }`;
 
-export const GET_TEAM = gql`query GetTeam($id: Int!, $season: Int!) {
-		id
-		name
-		teamName
-		abbreviation
-		locationName
-		officialSiteUrl
-		logoUrl
+export const GET_TEAM = gql` query GetTeam($id: Int!, $season: Int!) {
+		getTeam(id: $id, season: $season) {
+			id
+			name
+			teamName
+			abbreviation
+			locationName
+			officialSiteUrl
+			logoUrl
+		}
+
 }`;

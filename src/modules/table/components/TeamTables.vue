@@ -170,7 +170,7 @@ export default {
 
   async created () {
     await this.fetchData();
-    this.selectedDivision = this.divisions[0];
+    [this.selectedDivision] = this.divisions;
   },
 
   methods: {

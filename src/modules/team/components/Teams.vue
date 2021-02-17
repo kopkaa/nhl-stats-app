@@ -36,7 +36,6 @@ export default {
   name: 'Teams',
   data () {
     return {
-      conf: {},
     };
   },
 
