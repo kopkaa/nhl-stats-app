@@ -28,16 +28,13 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 
 
 ---TO-DO----
-- Nastavit eslint / DONE
 - i18 lokalizace
-- Automaticky schovat menu kdyz se zmensuje okno / DONE
 - Taby
 - Tabulky - vybirani custom sloupcu (checkbox)
 - Integrovat chart.js
 - tabulky - vybrat si divize / vsechny tymy
 - switching mezi divizema + transition
 - Dashboard widgety
-- custom skript na prepocitani vzdalenosti od menu - pridat dynamicky styl/classu
 
 - Zapas
 

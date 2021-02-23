@@ -1,14 +1,19 @@
 <template>
-  <v-container class="pa-10">
+  <v-container
+    v-if="!loading"
+    class="pa-10"
+  >
     <v-img
       :src="team.logoUrl"
       height="100px"
       contain
     />
-    <h1 class="text-center">
+    <h1 class="text-center mt-4">
       {{ team.name }}
     </h1>
-    <h2>{{ team.division }}</h2>
+    <h3 class="text-center font-weight-light grey--text">
+      {{ team.division.name }}
+    </h3>
   </v-container>
 </template>
 
@@ -20,6 +25,7 @@ export default {
   data () {
     return {
       team: null,
+      loading: true,
     };
   },
 
@@ -33,10 +39,13 @@ export default {
           id: this.$route.params.id,
         };
       },
+      skip () {
+        return true;
+      },
     },
   },
 
-  async created () {
+  async mounted () {
     await this.fetchData();
   },
 
@@ -45,6 +54,7 @@ export default {
       this.$apollo.queries.getTeam.skip = false;
       this.$apollo.queries.getTeam.refetch().then((result) => {
         this.team = result.data.getTeam;
+        this.loading = false;
       });
     },
   },
