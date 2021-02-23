@@ -9,6 +9,7 @@ class TeamAPI extends RESTDataSource {
   async returnTeam (id, season) {
     const team = await this.get(`/${id}`);
     team.teams[0].season = season;
+    team.teams[0].logoUrl = `https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${team.teams[0].id}.svg`;
     return team.teams[0];
   }
 

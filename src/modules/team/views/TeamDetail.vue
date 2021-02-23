@@ -1,6 +1,14 @@
 <template>
   <v-container class="pa-10">
-    {{ team.name }}
+    <v-img
+      :src="team.logoUrl"
+      height="100px"
+      contain
+    />
+    <h1 class="text-center">
+      {{ team.name }}
+    </h1>
+    <h2>{{ team.division }}</h2>
   </v-container>
 </template>
 
@@ -16,7 +24,6 @@ export default {
   },
 
   apollo: {
-
     getTeam: {
       query: GET_TEAM,
       loadingKey: 'loading',
@@ -30,7 +37,6 @@ export default {
   },
 
   async created () {
-    console.log('PARAMS ID', this.$route.params.id);
     await this.fetchData();
   },
 
@@ -42,6 +48,5 @@ export default {
       });
     },
   },
-
 };
 </script>
