@@ -19,6 +19,7 @@ Routy pro modul v modulu s nazvem  `router.js`, musi se pak importovat do main r
 | ------------- |:-------------:| -----:|
 | Team tables by division      | showing team tables by division | ☑️ |
 | Tabs      | Supporting tabs      | ❌ |
+| Notifications      | Notifications      | ❌ |
 | Widgets | On dashboard user can select custom widgets     |    ❌ |
 
 API 
@@ -35,6 +36,7 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 - tabulky - vybrat si divize / vsechny tymy
 - switching mezi divizema + transition
 - Dashboard widgety
+- Notifikace
 
 - Zapas
 

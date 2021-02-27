@@ -1,6 +1,9 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable consistent-return */
+/* eslint-disable no-return-await */
 /* eslint-disable no-empty-pattern */
-/* eslint-disable no-return- */
 /* eslint-disable max-len */
+/* eslint-disable-next-line no-return-await */
 const validateSeasons = require('../../utils/season.js');
 const validateDates = require('../../utils/dates.js');
 
@@ -27,8 +30,12 @@ const Resolvers = {
   Team: {
     players: (parent, {}, { dataSources }) => {
       const players = dataSources.teamAPI.returnRoster(parent.id, parent.season);
-      const promises = players.map((player) => dataSources.playerAPI.returnPlayer(player.person.id));
-      return Promise.all(promises);
+      return new Promise((resolve, reject) => {
+        players.then((data) => {
+          const promises = data.map(async (player) => await dataSources.playerAPI.returnPlayer(player.person.id));
+          resolve(Promise.all(promises));
+        });
+      });
     },
     standing: (parent, {}, { dataSources }) => dataSources.standingAPI.returnStandings(parent.id, parent.season),
     division: (parent, {}, { dataSources }) => dataSources.divisionAPI.returnDivision(parent.division.id),
