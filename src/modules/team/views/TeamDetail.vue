@@ -36,7 +36,7 @@ export default {
       variables () {
         return {
           season: this.$currentSeason,
-          id: this.$route.params.id,
+          id: parseInt(this.$route.params.id, 10),
         };
       },
       skip () {

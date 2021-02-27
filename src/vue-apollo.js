@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueApollo from 'vue-apollo';
 // import { InMemoryCache } from 'apollo-cache-inmemory';
+import { onError } from 'apollo-link-error';
+import { ApolloLink } from 'apollo-link';
 import {
   createApolloClient,
   restartWebsockets,
@@ -37,7 +39,7 @@ const defaultOptions = {
   // Override default apollo link
   // note: don't override httpLink here, specify httpLink options in the
   // httpLinkOptions property of defaultOptions.
-  // link: myLink
+  // link: ApolloLink.from([errorLink, authLink, restLink, httpLink]),
 
   // Override default cache
   // cache: memCache,
