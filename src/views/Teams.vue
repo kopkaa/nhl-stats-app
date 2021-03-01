@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { GET_TEAMS } from '../model/Team';
+import { GET_TEAMS } from '../models/Team';
 
 export default {
   name: 'Teams',

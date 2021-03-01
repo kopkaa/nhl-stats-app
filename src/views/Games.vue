@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { CONFS } from '../model/Conference';
+import { CONFS } from '../models/Conference';
 
 export default {
   name: 'Games',

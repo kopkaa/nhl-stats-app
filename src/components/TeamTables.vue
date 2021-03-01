@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import { GET_ALL_TEAMS } from '../model/Team';
+import { GET_ALL_TEAMS_STATS } from '../models/Team';
 
 const _ = require('lodash');
 
@@ -105,7 +105,7 @@ export default {
         },
         {
           title: 'all',
-          name: 'Všechny týmy',
+          name: 'Všechny',
           teams: [],
         },
       ],
@@ -142,7 +142,7 @@ export default {
 
   apollo: {
     getTeams: {
-      query: GET_ALL_TEAMS,
+      query: GET_ALL_TEAMS_STATS,
       loadingKey: 'loading',
       variables () {
         return {

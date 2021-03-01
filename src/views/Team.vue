@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import { GET_TEAM } from '../model/Team';
+import { GET_TEAM } from '../models/Team';
 
 export default {
-  name: 'TeamDetail',
+  name: 'Team',
   data () {
     return {
       team: null,
