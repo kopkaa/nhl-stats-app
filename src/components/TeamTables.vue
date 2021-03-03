@@ -35,6 +35,8 @@
             <template v-slot:selection="{item, index}">
               <v-chip
                 v-if="index < 3"
+                color="primary"
+                text-color="white"
                 x-small
               >
                 <span>{{ item.text }}</span>
@@ -224,6 +226,11 @@ export default {
       this.$apollo.queries.getTeams.skip = false;
       this.$apollo.queries.getTeams.refetch().then((results) => {
         this.teams = results.data.getTeams;
+        this.teams.forEach((element) => {
+          Object.keys(element.stats).forEach((v) => {
+            element.stats[v] = _.floor(element.stats[v], 2);
+          });
+        });
       });
     },
 
