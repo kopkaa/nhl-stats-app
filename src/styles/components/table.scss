@@ -12,6 +12,10 @@
 			label {
 				font-size: 0.875rem;
 			}
+
+			&--columns {
+				flex-basis: 40%!important;
+			}
 		}
 	}
 

@@ -48,11 +48,11 @@ query GetTeams($season: Int!) {
 			pts
 			goalsPerGame
 			goalsAgainstPerGame
+			shotsPerGame
     }
 		standing {
 			goalsScored
 			goalsAgainst
-			divisionRank
 		}
 	}
 }`;

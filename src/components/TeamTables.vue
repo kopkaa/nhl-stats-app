@@ -17,9 +17,41 @@
             single-line
           />
         </div>
+        <div class="table__options--item columns table__options--item--columns ml-auto">
+          <label class="label">Sloupce</label>
+          <v-select
+            v-model="selectedColumns"
+            :items="hideableColumns"
+            item-text="tooltip"
+            item-value="title"
+            label="Sloupce"
+            multiple
+            background-color="secondary"
+            rounded
+            dense
+            return-object
+            single-line
+          >
+            <template v-slot:selection="{item, index}">
+              <v-chip
+                v-if="index < 3"
+                x-small
+              >
+                <span>{{ item.text }}</span>
+              </v-chip>
+              <span
+                v-if="index === 3"
+                class="grey--text caption"
+              >
+                (+{{ selectedColumns.length - 3 }} others)
+              </span>
+            </template>
+          </v-select>
+        </div>
       </div>
+
       <v-data-table
-        :headers="headers"
+        :headers="columns"
         :items="tableTeams"
         :sort-by.sync="sortBy"
         :sort-desc.sync="descSort"
@@ -110,33 +142,39 @@ export default {
         },
       ],
       headers: [
-        { text: 'Name', align: 'start', value: 'name' },
         {
-          text: 'GP', align: 'start', value: 'stats.gamesPlayed', tooltip: 'Games played',
+          text: 'Name', align: 'start', value: 'name', hideable: false,
         },
         {
-          text: 'W', align: 'start', value: 'stats.wins', tooltip: 'Wins',
+          text: 'GP', align: 'start', value: 'stats.gamesPlayed', tooltip: 'Games played', hideable: false,
         },
         {
-          text: 'L', align: 'start', value: 'stats.losses', tooltip: 'Losses',
+          text: 'W', align: 'start', value: 'stats.wins', tooltip: 'Wins', hideable: false,
         },
         {
-          text: 'PTS', align: 'start', value: 'stats.pts', tooltip: 'Points',
+          text: 'L', align: 'start', value: 'stats.losses', tooltip: 'Losses', hideable: false,
         },
         {
-          text: 'SC', align: 'start', value: 'score', tooltip: 'Score', sortable: false,
+          text: 'PTS', align: 'start', value: 'stats.pts', tooltip: 'Points', hideable: false,
         },
         {
-          text: 'GS', align: 'start', value: 'stats.goalsPerGame', tooltip: 'Goals scored per game',
+          text: 'SC', align: 'start', value: 'score', tooltip: 'Score', sortable: false, hideable: true,
         },
         {
-          text: 'GA', align: 'start', value: 'stats.goalsAgainstPerGame', tooltip: 'Goals against per game',
+          text: 'GS/G', align: 'start', value: 'stats.goalsPerGame', tooltip: 'Goals scored per game', hideable: true,
+        },
+        {
+          text: 'GA/G', align: 'start', value: 'stats.goalsAgainstPerGame', tooltip: 'Goals against per game', hideable: true,
+        },
+        {
+          text: 'SF/G', align: 'start', value: 'stats.shotsPerGame', tooltip: 'Shots per game', hideable: true,
         },
       ],
       descSort: true,
       sortBy: 'stats.pts',
       teams: [],
       selectedDivision: '',
+      selectedColumns: [],
     };
   },
 
@@ -166,11 +204,19 @@ export default {
       }
       return this.teams;
     },
+    hideableColumns () {
+      return this.headers.filter((header) => header.hideable === true);
+    },
+    columns () {
+      const defaultColumns = this.headers.filter((header) => header.hideable === false);
+      return defaultColumns.concat(this.selectedColumns);
+    },
   },
 
   async created () {
     await this.fetchData();
     [this.selectedDivision] = this.divisions;
+    this.selectedColumns = this.hideableColumns;
   },
 
   methods: {
