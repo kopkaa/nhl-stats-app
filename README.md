@@ -1,5 +1,10 @@
 The application is showing team statistics, tables, info about players and matches from free NHL API. 
 
+## Application
+
+### Installing
+First of all install all dependencies with `npm install`
+
 ### SERVER
 Server is built with GraphQL server [Apollo Server](https://www.apollographql.com/docs/apollo-server/) <br>
 Run server with `npm run server`
@@ -69,3 +74,6 @@ Menu
 	- Tymy
 	- Hraci
 	- Tabulky
+
+## License
+Feel free to contribute
