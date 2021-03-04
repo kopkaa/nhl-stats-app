@@ -9,7 +9,7 @@ Server is built with GraphQL server [Apollo Server](https://www.apollographql.co
 ### CLIENT
 Client is using Vue.js library for connecting to GraphQL server and fetching data it's using [Vue-Apollo Library](https://apollo.vuejs.org/)
 
-	`npm run client`
+	npm run client
 
 Routy pro modul v modulu s nazvem  `router.js`, musi se pak importovat do main router.js
 
