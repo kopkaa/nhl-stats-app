@@ -189,7 +189,7 @@ export default {
   async created () {
     await this.fetchData();
     [this.selectedDivision] = this.divisions;
-    this.selectedColumns = this.hideableColumns;
+    this.selectedColumns = this.headers.filter((header) => header.default === true);
   },
 
   methods: {

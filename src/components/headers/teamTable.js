@@ -19,13 +19,10 @@ const headers = [
     text: 'SC', align: 'start', value: 'score', tooltip: 'Score', sortable: false, hideable: false,
   },
   {
-    text: 'DIFF', align: 'start', value: 'standing.goalDiff', tooltip: 'Goal difference', hideable: true,
+    text: 'DIFF', align: 'start', value: 'standing.goalDiff', tooltip: 'Goal difference', hideable: true, default: true,
   },
   {
     text: 'GS/G', align: 'start', value: 'stats.goalsPerGame', tooltip: 'Goals scored per game', hideable: true,
-  },
-  {
-    text: 'GA/G', align: 'start', value: 'stats.goalsAgainstPerGame', tooltip: 'Goals against per game', hideable: true,
   },
   {
     text: 'GA/G', align: 'start', value: 'stats.goalsAgainstPerGame', tooltip: 'Goals against per game', hideable: true,
