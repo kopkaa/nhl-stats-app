@@ -3,6 +3,7 @@ const Standing = `
 		goalsScored: Int
 		goalsAgainst: Int
 		divisionRank: Int
+		goalDiff: Int
   }
 `;
 

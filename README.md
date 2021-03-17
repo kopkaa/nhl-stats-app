@@ -30,53 +30,5 @@ https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/1.svg
 https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 
 
----TO-DO----
-- i18 lokalizace
-- Taby
-- Tabulky - vybirani custom sloupcu (checkbox)
-- Integrovat chart.js
-- tabulky - vybrat si divize / vsechny tymy
-- switching mezi divizema + transition
-- Dashboard widgety
-- Notifikace
-- GOAL DIFF - GS - GA
-- STREAK
-GET PIM OF TEAM?
-
-- Zapas
-
- CALGARY X PITS
-
- - last 5 matches
- [chart.js] [chart.js] - s filtrovanim dat
-
-Tabulky
-	Tabulka -doma x venku
-
-TeamDetailPage
-	- rozvrh
-	- stats
-	- soupiska
-
-Main Page
-	-Nadchazejici zapasy
-	- Odehrane zapasy
-		- detail
-		- three stars
-			- periods overview
-		- video highlights
-
-	- Top 5 tymu (podle zvolenych kriterii - default pts)
-	- Top 5 strelcu
-	- Strelci kteri nedali dlouho gol
-	- Tym co dlouho nevyhral
-	- Tym kteremu se dari
-	
-Menu
-	- Zapasy
-	- Tymy
-	- Hraci
-	- Tabulky
-
 ## License
 Feel free to contribute

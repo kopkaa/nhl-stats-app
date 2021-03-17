@@ -6,7 +6,6 @@
 import TeamTables from '../components/TeamTables.vue';
 
 export default {
-
   components: {
     'team-tables': TeamTables,
   },
