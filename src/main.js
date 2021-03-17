@@ -7,6 +7,8 @@ import './styles/global.scss';
 import { createProvider } from './vue-apollo';
 import vuetify from './plugins/vuetify';
 
+const _ = require('lodash');
+
 Vue.config.productionTip = false;
 Vue.prototype.$currentSeason = 20202021;
 

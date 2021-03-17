@@ -55,6 +55,7 @@ query GetTeams($season: Int!) {
 		standing {
 			goalsScored
 			goalsAgainst
+			goalDiff
 		}
 	}
 }`;
