@@ -46,7 +46,12 @@ const Resolvers = {
   Query: {
     getPlayer: (_, { id, season }, { dataSources }) => {
       validateSeasons(season);
-      return dataSources.playerAPI.returnPlayer(id, season);
+      const player = dataSources.playerAPI.returnPlayer(id, season);
+      return player;
+    },
+    getPlayerLog: (_, { playerId, season }, { dataSources }) => {
+      validateSeasons(season);
+      return dataSources.playerAPI.returnPlayerLog(playerId, season);
     },
     getPlayersByName: (_, { name, season }, { dataSources }) => {
       validateSeasons(season);

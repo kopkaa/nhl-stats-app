@@ -39,6 +39,9 @@ https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 - switching mezi divizema + transition
 - Dashboard widgety
 - Notifikace
+- GOAL DIFF - GS - GA
+- STREAK
+GET PIM OF TEAM?
 
 - Zapas
 

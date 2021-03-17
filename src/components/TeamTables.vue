@@ -160,7 +160,7 @@ export default {
           text: 'PTS', align: 'start', value: 'stats.pts', tooltip: 'Points', hideable: false,
         },
         {
-          text: 'SC', align: 'start', value: 'score', tooltip: 'Score', sortable: false, hideable: true,
+          text: 'SC', align: 'start', value: 'score', tooltip: 'Score', sortable: false, hideable: false,
         },
         {
           text: 'GS/G', align: 'start', value: 'stats.goalsPerGame', tooltip: 'Goals scored per game', hideable: true,

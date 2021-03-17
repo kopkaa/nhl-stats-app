@@ -49,6 +49,8 @@ query GetTeams($season: Int!) {
 			goalsPerGame
 			goalsAgainstPerGame
 			shotsPerGame
+			shotsAllowed
+			powerPlayOpportunities
     }
 		standing {
 			goalsScored

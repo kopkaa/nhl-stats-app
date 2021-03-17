@@ -14,6 +14,14 @@ class PlayerAPI extends RESTDataSource {
     player.season = season;
     return player;
   }
+
+  async returnPlayerLog (id, season) {
+    console.log('IDDD', id);
+    const playerLog = await this.get(`${id}/stats?stats=gameLog&season=${season}&site=en_nhl`);
+    // vratit pole jako v games
+    console.log('PLAYER LOG', playerLog);
+    return playerLog.stats[0].splits[0];
+  }
 }
 
 module.exports = PlayerAPI;
