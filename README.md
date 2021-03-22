@@ -18,6 +18,7 @@ Run client with	`npm run client`
 | Name        	| Description   | 	|
 | ------------- |:-------------:| -----:|
 | Team tables by division      | showing team tables by division | ☑️ |
+| Localization | CZ/EN translation    |    ❌ |
 | Tabs      | Supporting tabs      | ❌ |
 | Notifications      | Notifications      | ❌ |
 | Widgets | On dashboard user can select custom widgets     |    ❌ |
