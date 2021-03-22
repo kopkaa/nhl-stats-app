@@ -9,13 +9,11 @@ First of all install all dependencies with `npm install`
 Server is built with GraphQL server [Apollo Server](https://www.apollographql.com/docs/apollo-server/) <br>
 Run server with `npm run server`
 
-
-
 ### CLIENT
 Client is using Vue.js library for connecting to GraphQL server and fetching data it's using [Vue-Apollo Library](https://apollo.vuejs.org/) <br>
 Run client with	`npm run client`
 
-Routy pro modul v modulu s nazvem  `router.js`, musi se pak importovat do main router.js
+
 
 | Name        	| Description   | 	|
 | ------------- |:-------------:| -----:|
