@@ -24,9 +24,8 @@ Routy pro modul v modulu s nazvem  `router.js`, musi se pak importovat do main r
 | Notifications      | Notifications      | ❌ |
 | Widgets | On dashboard user can select custom widgets     |    ❌ |
 
-API 
+### API Docs
 https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/1.svg
-
 https://gitlab.com/dword4/nhlapi/-/blob/master/stats-api.md
 
 
