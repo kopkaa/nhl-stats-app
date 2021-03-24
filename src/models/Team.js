@@ -21,6 +21,12 @@ export const GET_TEAM = gql` query GetTeam($id: Int!, $season: Int!) {
 				id
 				name
 			}
+			players {
+				id,
+				stats {
+					shots
+				}
+			}
 			teamName
 			abbreviation
 			locationName

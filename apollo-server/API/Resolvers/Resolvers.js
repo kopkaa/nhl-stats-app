@@ -13,6 +13,7 @@ const Resolvers = {
       if (parent.active === false) return;
       return dataSources.teamAPI.returnTeam(parent.currentTeam.id, parent.season);
     },
+    stats: (parent, {}, { dataSources }) => dataSources.playerAPI.returnStats(parent.id, parent.season),
   },
   Schedule: {
     games: (parent, {}, { dataSources }) => {
@@ -32,7 +33,7 @@ const Resolvers = {
       const players = dataSources.teamAPI.returnRoster(parent.id, parent.season);
       return new Promise((resolve, reject) => {
         players.then((data) => {
-          const promises = data.map(async (player) => await dataSources.playerAPI.returnPlayer(player.person.id));
+          const promises = data.map(async (player) => await dataSources.playerAPI.returnPlayer(player.person.id, parent.season));
           resolve(Promise.all(promises));
         });
       });

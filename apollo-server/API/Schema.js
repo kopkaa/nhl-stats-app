@@ -4,6 +4,7 @@ const Division = require('./TypeDefs/Division');
 const Game = require('./TypeDefs/Game');
 const Player = require('./TypeDefs/Player');
 const PlayerLog = require('./TypeDefs/PlayerLog');
+const PlayerStats = require('./TypeDefs/PlayerStats');
 const Schedule = require('./TypeDefs/Schedule');
 const Status = require('./TypeDefs/Status');
 const Team = require('./TypeDefs/Team');
@@ -22,6 +23,7 @@ const schema = makeExecutableSchema({
     Game,
     Player,
     PlayerLog,
+    PlayerStats,
     Query,
     Schedule,
     Status,

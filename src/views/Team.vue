@@ -5,12 +5,12 @@
   >
     <v-img
       :src="team.logoUrl"
-      height="100px"
+      height="84px"
       contain
     />
-    <h1 class="text-center mt-4">
+    <h2 class="text-center mt-4">
       {{ team.name }}
-    </h1>
+    </h2>
     <h3 class="text-center font-weight-light grey--text">
       {{ team.division.name }}
     </h3>

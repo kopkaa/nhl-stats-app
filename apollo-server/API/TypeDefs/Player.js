@@ -14,6 +14,7 @@ const Player = `
     height: String
     weight: Int
     active: Boolean
+		stats: PlayerStats
     alternateCaptain: Boolean
     captain: Boolean
     rookie: Boolean
