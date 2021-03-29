@@ -53,7 +53,7 @@ export default {
       },
       {
         href: '/tables',
-        title: 'Tabulky',
+        title: 'Tabulka',
         icon: 'mdi mdi-table-large',
       },
       {

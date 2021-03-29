@@ -30,6 +30,7 @@
 </template>
 
 <script>
+// TODO Search team a filter podle divize
 import { GET_TEAMS } from '../models/Team';
 
 export default {

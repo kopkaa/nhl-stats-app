@@ -28,6 +28,20 @@ $alizarin: #e74c3c;
 
 $river-blue: #3498db;
 
+.color {
+
+	&-emerald {
+		color: $emerald;
+	}
+
+	&-alizarin {
+		color: $alizarin;
+	}
+}
+
+
+
+
 
 
 

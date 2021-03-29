@@ -1,13 +1,14 @@
 <template lang="">
-  <team-tables />
+  <team-table />
 </template>
 <script>
 
-import TeamTables from '../components/TeamTables.vue';
+// TODO Pridat Chart.js s nejakyma statistikama
+import TeamTable from '../components/TeamTable.vue';
 
 export default {
   components: {
-    'team-tables': TeamTables,
+    'team-table': TeamTable,
   },
 
 };

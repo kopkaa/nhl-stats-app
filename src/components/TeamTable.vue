@@ -84,6 +84,14 @@
         </template>
 
         <template
+          v-slot:[`item.standing.goalDiff`]="{item}"
+        >
+          <span :class="item.standing.goalDiff > 0 ? 'color-emerald':'color-alizarin' ">
+            {{ item.standing.goalDiff }}
+          </span>
+        </template>
+
+        <template
           v-for="h in headers"
           v-slot:[`header.${h.value}`]="{ header }"
         >
