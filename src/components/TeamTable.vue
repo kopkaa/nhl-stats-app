@@ -86,7 +86,7 @@
         <template
           v-slot:[`item.standing.goalDiff`]="{item}"
         >
-          <span :class="item.standing.goalDiff > 0 ? 'color-emerald':'color-alizarin' ">
+          <span :class="item.standing.goalDiff >= 0 ? 'color-emerald':'color-alizarin' ">
             {{ item.standing.goalDiff }}
           </span>
         </template>

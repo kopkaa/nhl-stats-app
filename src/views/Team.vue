@@ -14,14 +14,24 @@
     <h3 class="text-center font-weight-light grey--text">
       {{ team.division.name }}
     </h3>
+    <v-row no-gutters>
+      <top-ten
+        :players="team.players"
+        :type="'Skaters'"
+      />
+    </v-row>
   </v-container>
 </template>
 
 <script>
 import { GET_TEAM } from '../models/Team';
+import TopTen from '../components/TopTen.vue';
 
 export default {
   name: 'Team',
+  components: {
+    'top-ten': TopTen,
+  },
   data () {
     return {
       team: null,
@@ -45,7 +55,7 @@ export default {
     },
   },
 
-  async mounted () {
+  async created () {
     await this.fetchData();
   },
 
