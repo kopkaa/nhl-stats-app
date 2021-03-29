@@ -19,7 +19,7 @@ class PlayerAPI extends RESTDataSource {
 
   async returnStats (id, season) {
     const playerStats = await this.get(`${id}/stats?stats=statsSingleSeason&season=${season}&site=en_nhl`);
-    const { stat } = playerStats.stats[0].splits[0] || null;
+    const { stat } = playerStats.stats[0].splits[0] || {};
     return stat;
   }
 
