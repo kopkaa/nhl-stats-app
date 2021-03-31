@@ -10,6 +10,5 @@ export default {
   components: {
     'team-table': TeamTable,
   },
-
 };
 </script>
