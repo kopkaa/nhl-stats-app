@@ -3,22 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "client": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "apollo": "vue-cli-service apollo:dev --generate-schema",
-    "apollo:schema:generate": "vue-cli-service apollo:schema:generate",
-    "apollo:schema:publish": "vue-cli-service apollo:schema:publish",
-    "apollo:start": "vue-cli-service apollo:start",
-    "server": "nodemon ./apollo-server/server.js"
+    "start": "node server.js"
   },
   "dependencies": {
-    "apollo-cache-inmemory": "^1.6.6",
     "@vue/cli-service": "~4.4.0",
+    "apollo-cache-inmemory": "^1.6.6",
     "apollo-server": "^2.16.1",
+    "express": "^4.17.1",
     "graphql-tools": "^6.2.3",
     "lodash": "^4.17.20",
     "npm": "^6.14.11",
+    "serve-static": "^1.14.1",
     "vue": "^2.6.12",
     "vue-apollo": "^3.0.0-beta.11",
     "vue-router": "^3.4.3",
