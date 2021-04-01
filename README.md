@@ -1,4 +1,6 @@
-The application is showing team statistics, tables, info about players and matches from free NHL API. 
+The application is showing team statistics, tables, info about players and matches from free NHL API. <br>
+[Demo deployed on Heroku](https://nhl-app-client.herokuapp.com/) 
+
 
 ## Application
 
