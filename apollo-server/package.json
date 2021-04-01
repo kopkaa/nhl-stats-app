@@ -9,9 +9,9 @@
     "apollo-datasource-rest": "^0.9.3",
     "apollo-server": "^2.16.1",
     "graphql-tools": "^6.2.3",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1"
   },
-
   "engines": {
     "node": "15.x"
   }
