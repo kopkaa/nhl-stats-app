@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-/dist
+/client/dist
 
 # local env files
 .env.local
@@ -22,5 +22,4 @@ doing.txt
 *.njsproj
 *.sln
 *.sw?
-
 /live/
