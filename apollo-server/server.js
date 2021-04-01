@@ -1,4 +1,4 @@
-const { ApolloServer } = require('apollo-server');
+const { ApolloServer } = require('apollo-server-express');
 const ConferenceAPI = require('./API/DataSources/ConferenceAPI');
 const TeamAPI = require('./API/DataSources/TeamAPI');
 const DivisionAPI = require('./API/DataSources/DivisionAPI');
@@ -6,7 +6,18 @@ const PlayerAPI = require('./API/DataSources/PlayerAPI');
 const ScheduleAPI = require('./API/DataSources/ScheduleAPI');
 const StandingAPI = require('./API/DataSources/StandingAPI');
 const schema = require('./API/Schema');
-const path = require('path');
+const express = require('express');
+const cors = require('cors')
+const bodyParser = require('body-parser')
+
+const app = express();
+const PORT = process.env.PORT || 8000;
+const graphqlPath = process.env.GRAPHQL || 'graphql';
+
+app.use(cors())
+app.use(bodyParser.text({ type: 'application/graphql' }))
+
+
 
 const server = new ApolloServer({
   schema,
@@ -21,6 +32,7 @@ const server = new ApolloServer({
   }),
 });
 
-server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
-});
+
+server.applyMiddleware({ app, path: `/${graphqlPath}` });
+
+app.listen(PORT, () => console.log(`graphql listening on port ${PORT}`))
