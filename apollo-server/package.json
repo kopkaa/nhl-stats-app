@@ -1,12 +1,18 @@
 {
-  "name": "apollo-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "name": "nhl_stats_app",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "apollo-datasource-rest": "^0.9.3",
+    "apollo-server": "^2.16.1",
+    "graphql-tools": "^6.2.3",
+    "lodash": "^4.17.20"
+  },
+
+  "engines": {
+    "node": "15.x"
+  }
 }
