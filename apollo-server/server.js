@@ -7,21 +7,20 @@ const ScheduleAPI = require('./API/DataSources/ScheduleAPI');
 const StandingAPI = require('./API/DataSources/StandingAPI');
 const schema = require('./API/Schema');
 const express = require('express');
-const cors = require('cors')
-const bodyParser = require('body-parser')
+
 
 const app = express();
 const PORT = process.env.PORT || 8000;
 const graphqlPath = process.env.GRAPHQL || 'graphql';
 
-app.use(cors())
-app.use(bodyParser.text({ type: 'application/graphql' }))
+
 
 
 
 const server = new ApolloServer({
   schema,
   introspection: true,
+  playground: true,
   dataSources: () => ({
 		playerAPI: new PlayerAPI(),
 		conferenceAPI: new ConferenceAPI(),
