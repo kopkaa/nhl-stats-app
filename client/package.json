@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
+    "build": "rm -rf dist/ && vue-cli-service build",
     "postinstall": "npm rebuild node-sass && npm install --unsafe-perm -f node-sass"
   },
   "dependencies": {
-    "@vue/cli-service": "~4.4.0",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-server": "^2.16.1",
     "express": "^4.17.1",

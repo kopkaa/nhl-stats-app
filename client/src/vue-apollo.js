@@ -20,12 +20,14 @@ Vue.use(VueApollo);
 const AUTH_TOKEN = 'apollo-token';
 
 // Http endpoint
-const httpEndpoint
-if (process.env.NODE_ENV !== 'production') {
-  httpEndpoint = '/graphql';
-} else {
-  httpEndpoint = 'https://nhl-app-server.herokuapp.com/graphql';
-}
+const httpEndpoint = 'https://nhl-app-server.herokuapp.com/graphql'
+
+// TODO Vyresit produkci/local env
+// if (process.env.NODE_ENV !== 'production') {
+//   httpEndpoint = '/graphql';
+// } else {
+//   httpEndpoint = 'https://nhl-app-server.herokuapp.com/graphql';
+// }
  
 
 // const memCache = new InMemoryCache();

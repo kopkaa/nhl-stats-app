@@ -2,7 +2,6 @@
   "root": "dist/",
   "clean_urls": true,
   "routes": {
-    "/**": "dist/index.html",
-    "/dashboard": "dist/index.html"
+    "/**": "index.html",
   }
 }
