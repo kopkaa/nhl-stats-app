@@ -1,0 +1,38 @@
+.table {
+
+	
+	&__options {
+		display: flex;
+		flex-direction: row;
+
+		&--item {
+			flex-grow: 0;
+			flex-basis: 20%;
+
+			label {
+				font-size: 0.875rem;
+			}
+
+			&--columns {
+				flex-basis: 40%!important;
+			}
+		}
+	}
+
+  &__first-column {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 5px;
+    }
+
+		a:hover {
+			text-decoration: underline;
+		}
+  }
+}
+
+.arrows {
+	text-align: center;
+}

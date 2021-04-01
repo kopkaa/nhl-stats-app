@@ -1,0 +1,11 @@
+[*]
+indent_style = tab
+
+[*.{js,ts,json}]
+indent_size = 2
+
+[*.java]
+indent_size = 2
+
+[*.js]
+indent_style = tab
