@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "vue-cli-service serve",
-    "serve": "vue-cli-service serve",
+    "start": "set NODE_ENV=dev&&vue-cli-service serve",
     "build": "rm -rf dist/ && vue-cli-service build",
     "postinstall": "npm rebuild node-sass && npm install --unsafe-perm -f node-sass"
   },
@@ -12,20 +11,20 @@
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-server": "^2.16.1",
     "express": "^4.17.1",
+    "graphql-tag": "^2.11.0",
     "graphql-tools": "^6.2.3",
     "lodash": "^4.17.20",
+    "node-sass": "^4.14.0",
     "npm": "^6.14.11",
+    "sass": "^1.19.0",
+    "sass-loader": "^10.0.2",
     "serve-static": "^1.14.1",
     "vue": "^2.6.12",
     "vue-apollo": "^3.0.0-beta.11",
     "vue-router": "^3.4.3",
     "vue-sidebar-menu": "^4.7.1",
     "vuetify": "^2.2.11",
-    "websocket": "^1.0.33",
-    "graphql-tag": "^2.11.0",
-    "node-sass": "4.14.0",
-    "sass": "^1.19.0",
-    "sass-loader": "^10.0.2"
+    "websocket": "^1.0.33"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.4.6",
