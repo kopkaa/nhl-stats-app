@@ -1,41 +1,36 @@
-import Vue from 'vue';
-import VueApollo from 'vue-apollo';
+import Vue from "vue";
+import VueApollo from "vue-apollo";
 // import { InMemoryCache } from 'apollo-cache-inmemory';
-import { onError } from 'apollo-link-error';
-import { createHttpLink } from 'apollo-link-http'
+import { onError } from "apollo-link-error";
+import { createHttpLink } from "apollo-link-http";
 import {
   createApolloClient,
   restartWebsockets,
-} from 'vue-cli-plugin-apollo/graphql-client';
+} from "vue-cli-plugin-apollo/graphql-client";
 
 // Install the vue plugin
 Vue.use(VueApollo);
 
-// const httpLink = createHttpLink({
-//   // You should use an absolute URL here
-//   uri: 'https://nhl-app-server.herokuapp.com/graphql',
-// })
+let uri;
+if (process.env.NODE_ENV == "dev") {
+  uri = "http://localhost:8000/graphql";
+} else {
+  uri = "https://nhl-app-server.herokuapp.com/graphql";
+}
+
+const httpLink = createHttpLink({
+  uri: uri,
+});
 
 // Name of the localStorage item
-const AUTH_TOKEN = 'apollo-token';
-
-// Http endpoint
-const httpEndpoint = 'https://nhl-app-server.herokuapp.com/graphql'
-
-// TODO Vyresit produkci/local env
-// if (process.env.NODE_ENV !== 'production') {
-//   httpEndpoint = '/graphql';
-// } else {
-//   httpEndpoint = 'https://nhl-app-server.herokuapp.com/graphql';
-// }
- 
+const AUTH_TOKEN = "apollo-token";
 
 // const memCache = new InMemoryCache();
 
 // Config
 const defaultOptions = {
   // You can use `https` for secure connection (recommended in production)
-  httpEndpoint,
+  //httpEndpoint,
   // You can use `wss` for secure connection (recommended in production)
   // Use `null` to disable subscriptions
   wsEndpoint: null,
@@ -52,7 +47,7 @@ const defaultOptions = {
   // Override default apollo link
   // note: don't override httpLink here, specify httpLink options in the
   // httpLinkOptions property of defaultOptions.
-  // link: httpLink,
+  link: httpLink,
 
   // Override default cache
   // cache: memCache,
@@ -68,7 +63,7 @@ const defaultOptions = {
 };
 
 // Call this in the Vue app file
-export function createProvider (options = {}) {
+export function createProvider(options = {}) {
   // Create apollo client
   const { apolloClient, wsClient } = createApolloClient({
     ...defaultOptions,
@@ -84,12 +79,12 @@ export function createProvider (options = {}) {
         // fetchPolicy: 'cache-and-network',
       },
     },
-    errorHandler (error) {
+    errorHandler(error) {
       // eslint-disable-next-line no-console
       console.log(
-        '%cError',
-        'background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;',
-        error.message,
+        "%cError",
+        "background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;",
+        error.message
       );
     },
   });
@@ -98,31 +93,29 @@ export function createProvider (options = {}) {
 }
 
 // Manually call this when user log in
-export async function onLogin (apolloClient, token) {
-  if (typeof localStorage !== 'undefined' && token) {
+export async function onLogin(apolloClient, token) {
+  if (typeof localStorage !== "undefined" && token) {
     localStorage.setItem(AUTH_TOKEN, token);
   }
   if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient);
   try {
     await apolloClient.resetStore();
-  }
-  catch (e) {
+  } catch (e) {
     // eslint-disable-next-line no-console
-    console.log('%cError on cache reset (login)', 'color: orange;', e.message);
+    console.log("%cError on cache reset (login)", "color: orange;", e.message);
   }
 }
 
 // Manually call this when user log out
-export async function onLogout (apolloClient) {
-  if (typeof localStorage !== 'undefined') {
+export async function onLogout(apolloClient) {
+  if (typeof localStorage !== "undefined") {
     localStorage.removeItem(AUTH_TOKEN);
   }
   if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient);
   try {
     await apolloClient.resetStore();
-  }
-  catch (e) {
+  } catch (e) {
     // eslint-disable-next-line no-console
-    console.log('%cError on cache reset (logout)', 'color: orange;', e.message);
+    console.log("%cError on cache reset (logout)", "color: orange;", e.message);
   }
 }
