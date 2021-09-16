@@ -9,11 +9,11 @@ First of all install all dependencies with `npm install`
 
 ### SERVER
 Server is built with GraphQL server [Apollo Server](https://www.apollographql.com/docs/apollo-server/) <br>
-Run server with `npm run server`
+Run server in apollo-server `npx nodemon server.js`
 
 ### CLIENT
 Client is using Vue.js library for connecting to GraphQL server and fetching data it's using [Vue-Apollo Library](https://apollo.vuejs.org/) <br>
-Run client with	`npm run client`
+Run client in client folder with	`npm run serve`
 
 
 

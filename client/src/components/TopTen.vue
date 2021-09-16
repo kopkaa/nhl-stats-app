@@ -1,33 +1,33 @@
-<template lang="">
-  <div />
+<template>
+  <div>
+    {{ forwards }}
+  </div>
 </template>
 <script>
 export default {
-  name: 'TopTen',
+  name: "TopTen",
 
   props: {
     players: {
       type: Array,
       required: true,
     },
-    type: {
-      type: String,
-      required: true,
-    },
   },
 
-  data () {
+  data() {
     return {};
   },
 
   computed: {
-    topTenPlayers () {
-      return this.players;
+    forwards() {
+      return _.filter(this.players, (player) => {
+        return player.positionCode !== "D";
+      });
     },
   },
 
-  created () {
-
+  created() {
+    console.log("PLAYEERS", this.players);
   },
 };
 </script>

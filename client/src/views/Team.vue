@@ -1,13 +1,6 @@
 <template>
-  <v-container
-    v-if="!loading"
-    class="pa-10"
-  >
-    <v-img
-      :src="team.logoUrl"
-      height="84px"
-      contain
-    />
+  <v-container v-if="!loading" class="pa-10">
+    <v-img :src="team.logoUrl" height="84px" contain />
     <h2 class="text-center mt-4">
       {{ team.name }}
     </h2>
@@ -15,24 +8,22 @@
       {{ team.division.name }}
     </h3>
     <v-row no-gutters>
-      <top-ten
-        :players="team.players"
-        :type="'Skaters'"
-      />
+      <!-- //TODO topten -->
+      <top-ten :players="team.players" />
     </v-row>
   </v-container>
 </template>
 
 <script>
-import { GET_TEAM } from '../models/Team';
-import TopTen from '../components/TopTen.vue';
+import { GET_TEAM } from "../models/Team";
+import TopTen from "../components/TopTen.vue";
 
 export default {
-  name: 'Team',
+  name: "Team",
   components: {
-    'top-ten': TopTen,
+    "top-ten": TopTen,
   },
-  data () {
+  data() {
     return {
       team: null,
       loading: true,
@@ -42,25 +33,25 @@ export default {
   apollo: {
     getTeam: {
       query: GET_TEAM,
-      loadingKey: 'loading',
-      variables () {
+      loadingKey: "loading",
+      variables() {
         return {
           season: this.$currentSeason,
           id: parseInt(this.$route.params.id, 10),
         };
       },
-      skip () {
+      skip() {
         return true;
       },
     },
   },
 
-  async created () {
+  async created() {
     await this.fetchData();
   },
 
   methods: {
-    fetchData () {
+    fetchData() {
       this.$apollo.queries.getTeam.skip = false;
       this.$apollo.queries.getTeam.refetch().then((result) => {
         this.team = result.data.getTeam;
