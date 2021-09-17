@@ -1,6 +1,13 @@
 <template>
-  <v-container v-if="!loading" class="pa-10">
-    <v-img :src="team.logoUrl" height="84px" contain />
+  <v-container
+    v-if="!loading"
+    class="pa-10"
+  >
+    <v-img
+      :src="team.logoUrl"
+      height="84px"
+      contain
+    />
     <h2 class="text-center mt-4">
       {{ team.name }}
     </h2>
@@ -8,8 +15,23 @@
       {{ team.division.name }}
     </h3>
     <v-row no-gutters>
-      <!-- //TODO topten -->
-      <top-ten :players="team.players" />
+      <v-col
+        v-for="n in 2"
+        :key="n"
+        :cols="6"
+      >
+        <v-card
+          class="pa-2"
+          tile
+          outlined
+        >
+          <top-ten
+            v-if="n === 1"
+            :players="team.players"
+          />
+
+        </v-card>
+      </v-col>
     </v-row>
   </v-container>
 </template>

@@ -1,6 +1,13 @@
 <template>
   <div>
-    {{ forwards }}
+    <!-- TODO Udelat switch mezi forwards/defensemans jako taby -->
+    <div
+      v-for="(player, index) in getTopTen"
+      :key="index"
+    >
+
+      {{ player.stats.hits }}
+    </div>
   </div>
 </template>
 <script>
@@ -19,15 +26,13 @@ export default {
   },
 
   computed: {
-    forwards() {
-      return _.filter(this.players, (player) => {
-        return player.positionCode !== "D";
-      });
+    getTopTen(filterBy) {
+      return _.orderBy(this.players, "stats.hits", "desc");
     },
   },
 
-  created() {
-    console.log("PLAYEERS", this.players);
-  },
+  created() {},
+
+  topTen(players) {},
 };
 </script>
