@@ -1,14 +1,16 @@
 <template lang="">
-  <team-table />
+	<div class="pa-10">
+		<!-- //TODO: Fixed height a udelat scroll kdyz all -->
+		<teams-table />
+	</div>
 </template>
 <script>
-
 // TODO Pridat Chart.js s nejakyma statistikama
-import TeamTable from '../components/TeamTable.vue';
+import TeamsTable from "../components/TeamsTable.vue";
 
 export default {
   components: {
-    'team-table': TeamTable,
+    "teams-table": TeamsTable,
   },
 };
 </script>
