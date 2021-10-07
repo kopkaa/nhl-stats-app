@@ -15,24 +15,37 @@
       {{ team.division.name }}
     </h3>
     <v-row no-gutters>
-      <top-ten
-        :players="team.players"
-        :type="'Skaters'"
-      />
+      <v-col
+        v-for="n in 2"
+        :key="n"
+        :cols="6"
+      >
+        <v-card
+          class="pa-2"
+          tile
+          outlined
+        >
+          <top-ten
+            v-if="n === 1"
+            :players="team.players"
+          />
+
+        </v-card>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import { GET_TEAM } from '../models/Team';
-import TopTen from '../components/TopTen.vue';
+import { GET_TEAM } from "../models/Team";
+import TopTen from "../components/TopTen.vue";
 
 export default {
-  name: 'Team',
+  name: "Team",
   components: {
-    'top-ten': TopTen,
+    "top-ten": TopTen,
   },
-  data () {
+  data() {
     return {
       team: null,
       loading: true,
@@ -42,25 +55,25 @@ export default {
   apollo: {
     getTeam: {
       query: GET_TEAM,
-      loadingKey: 'loading',
-      variables () {
+      loadingKey: "loading",
+      variables() {
         return {
           season: this.$currentSeason,
           id: parseInt(this.$route.params.id, 10),
         };
       },
-      skip () {
+      skip() {
         return true;
       },
     },
   },
 
-  async created () {
+  async created() {
     await this.fetchData();
   },
 
   methods: {
-    fetchData () {
+    fetchData() {
       this.$apollo.queries.getTeam.skip = false;
       this.$apollo.queries.getTeam.refetch().then((result) => {
         this.team = result.data.getTeam;
