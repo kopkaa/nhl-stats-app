@@ -1,4 +1,4 @@
-The application is showing team statistics, tables, info about players and matches from free NHL API. 
+KOKOOOOOOOOOOOOOOOS
 
 ## Application
 
