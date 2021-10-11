@@ -1,11 +1,16 @@
 <template>
 
-  <v-container class="pa-10">
-    <v-progress-circular
+  <v-container class="pa-10 h-100">
+    <div
+      class="d-flex justify-center align-center h-100"
       v-if="loading"
-      indeterminate
-      color="primary"
-    ></v-progress-circular>
+    >
+      <v-progress-circular
+        :size="50"
+        indeterminate
+        color="#3498db"
+      ></v-progress-circular>
+    </div>
 
     <div v-if="!loading">
       <v-img
