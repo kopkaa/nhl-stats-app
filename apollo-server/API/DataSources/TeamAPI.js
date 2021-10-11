@@ -1,26 +1,28 @@
-const { RESTDataSource } = require('apollo-datasource-rest');
+const { RESTDataSource } = require("apollo-datasource-rest");
 
 class TeamAPI extends RESTDataSource {
-  constructor () {
+  constructor() {
     super();
-    this.baseURL = 'https://statsapi.web.nhl.com/api/v1/teams';
+    this.baseURL = "https://statsapi.web.nhl.com/api/v1/teams";
   }
 
-  async returnTeam (id, season) {
+  async returnTeam(id, season) {
     const team = await this.get(`/${id}`);
     team.teams[0].season = season;
     team.teams[0].logoUrl = `https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${team.teams[0].id}.svg`;
     return team.teams[0];
   }
 
-  async returnTeamByName (name, season) {
+  async returnTeamByName(name, season) {
     const teams = await this.get(`?season=${season}`);
-    const thisTeam = teams.teams.filter((team) => team.name === name || team.teamName === name);
+    const thisTeam = teams.teams.filter(
+      (team) => team.name === name || team.teamName === name
+    );
     thisTeam[0].season = season;
     return thisTeam[0];
   }
 
-  async returnTeams (season) {
+  async returnTeams(season) {
     const teams = await this.get(`?season=${season}`);
     return teams.teams.map((team) => {
       team.season = season;
@@ -29,17 +31,17 @@ class TeamAPI extends RESTDataSource {
     });
   }
 
-  async returnRoster (id, season) {
+  async returnRoster(id, season) {
     const roster = await this.get(`/${id}?expand=team.roster&season=${season}`);
     return roster.teams[0].roster.roster;
   }
 
-  async returnStats (id, season) {
+  async returnStats(id, season) {
     const stats = await this.get(`/${id}?expand=team.stats&season=${season}`);
     return stats.teams[0].teamStats[0].splits[0].stat;
   }
 
-  async returnStatPositions (id, season) {
+  async returnStatPositions(id, season) {
     const stats = await this.get(`/${id}?expand=team.stats&season=${season}`);
     return stats.teams[0].teamStats[0].splits[1].stat;
   }

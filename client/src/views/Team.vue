@@ -1,38 +1,45 @@
 <template>
-  <v-container
-    v-if="!loading"
-    class="pa-10"
-  >
-    <v-img
-      :src="team.logoUrl"
-      height="84px"
-      contain
-    />
-    <h2 class="text-center mt-4">
-      {{ team.name }}
-    </h2>
-    <h3 class="text-center font-weight-light grey--text">
-      {{ team.division.name }}
-    </h3>
-    <v-row no-gutters>
-      <v-col
-        v-for="n in 2"
-        :key="n"
-        :cols="6"
-      >
-        <v-card
-          class="pa-2"
-          tile
-        >
-          <top-ten
-            v-if="n === 1"
-            :players="team.players"
-          />
 
-        </v-card>
-      </v-col>
-    </v-row>
+  <v-container class="pa-10">
+    <v-progress-circular
+      v-if="loading"
+      indeterminate
+      color="primary"
+    ></v-progress-circular>
+
+    <div v-if="!loading">
+      <v-img
+        :src="team.logoUrl"
+        height="84px"
+        contain
+      />
+      <h2 class="text-center mt-4">
+        {{ team.name }}
+      </h2>
+      <h3 class="text-center font-weight-light grey--text">
+        {{ team.division.name }}
+      </h3>
+      <v-row no-gutters>
+        <v-col
+          v-for="n in 2"
+          :key="n"
+          :cols="6"
+        >
+          <v-card
+            class="pa-2"
+            tile
+          >
+            <top-ten
+              v-if="n === 1"
+              :players="team.players"
+            />
+
+          </v-card>
+        </v-col>
+      </v-row>
+    </div>
   </v-container>
+
 </template>
 
 <script>

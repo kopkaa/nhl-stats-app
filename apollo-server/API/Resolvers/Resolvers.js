@@ -43,22 +43,18 @@ const Resolvers = {
   },
   Team: {
     //TODO prepsat (pomale to je)
-    players: (parent, {}, { dataSources }) => {
-      const players = dataSources.teamAPI.returnRoster(
+    players: async (parent, {}, { dataSources }) => {
+      let players = await dataSources.teamAPI.returnRoster(
         parent.id,
         parent.season
       );
-      return new Promise((resolve, reject) => {
-        players.then((data) => {
-          const promises = data.map(
-            async (player) =>
-              await dataSources.playerAPI.returnPlayer(
-                player.person.id,
-                parent.season
-              )
-          );
-          resolve(Promise.all(promises));
-        });
+
+      return players.map(async (player) => {
+        const p = await dataSources.playerAPI.returnPlayer(
+          player.person.id,
+          parent.season
+        );
+        return p;
       });
     },
     standing: (parent, {}, { dataSources }) =>
