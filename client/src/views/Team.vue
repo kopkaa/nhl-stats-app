@@ -23,7 +23,6 @@
         <v-card
           class="pa-2"
           tile
-          outlined
         >
           <top-ten
             v-if="n === 1"
