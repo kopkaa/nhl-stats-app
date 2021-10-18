@@ -65,9 +65,7 @@
         calculate-widths
         hide-default-footer
       >
-        <template
-          v-slot:item.name="{item}"
-        >
+        <template v-slot:item.name="{item}">
           <div class="table__first-column">
             <img
               :src="item.logoUrl"
@@ -77,15 +75,11 @@
           </div>
         </template>
 
-        <template
-          v-slot:[`item.score`]="{item}"
-        >
+        <template v-slot:[`item.score`]="{item}">
           <span> {{ item.standing.goalsScored }}:{{ item.standing.goalsAgainst }}</span>
         </template>
 
-        <template
-          v-slot:[`item.standing.goalDiff`]="{item}"
-        >
+        <template v-slot:[`item.standing.goalDiff`]="{item}">
           <span :class="item.standing.goalDiff >= 0 ? 'color-emerald':'color-alizarin' ">
             {{ item.standing.goalDiff }}
           </span>
@@ -112,49 +106,49 @@
 </template>
 
 <script>
-import { GET_ALL_TEAMS_STATS } from '../models/Team';
-import headers from './headers/teamTable';
+import { GET_ALL_TEAMS_STATS } from "../models/Team";
+import headers from "./headers/teamTable";
 
 export default {
-  name: 'Tables',
-  data () {
+  name: "Tables",
+  data() {
     return {
       divisions: [
         {
-          id: 28,
-          title: 'north',
-          name: 'Severní',
+          id: 16,
+          title: "central",
+          name: "Centrální",
           teams: [],
         },
         {
-          id: 26,
-          title: 'atlantic',
-          name: 'Atlantická',
+          id: 15,
+          title: "pacific",
+          name: "Pacifická",
           teams: [],
         },
         {
-          id: 27,
-          title: 'west',
-          name: 'Západní',
+          id: 18,
+          title: "metropolitan",
+          name: "Metropolitní",
           teams: [],
         },
         {
-          id: 25,
-          title: 'east',
-          name: 'Východní',
+          id: 17,
+          title: "atlantic",
+          name: "Atlantická",
           teams: [],
         },
         {
-          title: 'all',
-          name: 'Všechny',
+          title: "all",
+          name: "Všechny",
           teams: [],
         },
       ],
       headers,
       descSort: true,
-      sortBy: 'stats.pts',
+      sortBy: "stats.pts",
       teams: [],
-      selectedDivision: '',
+      selectedDivision: "",
       selectedColumns: [],
     };
   },
@@ -162,21 +156,21 @@ export default {
   apollo: {
     getTeams: {
       query: GET_ALL_TEAMS_STATS,
-      loadingKey: 'loading',
-      variables () {
+      loadingKey: "loading",
+      variables() {
         return {
           season: this.$currentSeason,
         };
       },
 
-      skip () {
+      skip() {
         return true;
       },
     },
   },
 
   computed: {
-    tableTeams () {
+    tableTeams() {
       if (this.selectedDivision.id) {
         const selectedTeams = _.filter(this.teams, (team) => {
           if (team.division.id === this.selectedDivision.id) return team;
@@ -185,23 +179,27 @@ export default {
       }
       return this.teams;
     },
-    hideableColumns () {
+    hideableColumns() {
       return this.headers.filter((header) => header.hideable === true);
     },
-    columns () {
-      const defaultColumns = this.headers.filter((header) => header.hideable === false);
+    columns() {
+      const defaultColumns = this.headers.filter(
+        (header) => header.hideable === false
+      );
       return defaultColumns.concat(this.selectedColumns);
     },
   },
 
-  async created () {
+  async created() {
     await this.fetchData();
     [this.selectedDivision] = this.divisions;
-    this.selectedColumns = this.headers.filter((header) => header.default === true);
+    this.selectedColumns = this.headers.filter(
+      (header) => header.default === true
+    );
   },
 
   methods: {
-    fetchData () {
+    fetchData() {
       this.$apollo.queries.getTeams.skip = false;
       this.$apollo.queries.getTeams.refetch().then((results) => {
         this.teams = results.data.getTeams;
@@ -213,10 +211,9 @@ export default {
       });
     },
 
-    openDetail (id) {
-      this.$router.push({ name: 'team-detail', params: { id } });
+    openDetail(id) {
+      this.$router.push({ name: "team-detail", params: { id } });
     },
   },
-
 };
 </script>
