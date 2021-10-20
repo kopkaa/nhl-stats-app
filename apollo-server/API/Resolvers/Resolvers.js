@@ -78,28 +78,7 @@ const Resolvers = {
       validateSeasons(season);
       return dataSources.playerAPI.returnPlayerLog(playerId, season);
     },
-    getPlayersByName: (_, { name, season }, { dataSources }) => {
-      validateSeasons(season);
-      const teams = dataSources.teamAPI.returnTeams(season);
-      const promises = teams.map((team) =>
-        dataSources.teamAPI.returnRoster(team.id, season)
-      );
-      const allPlayers = Promise.all(promises);
 
-      const playerList = allPlayers.reduce(
-        (accumulater, team) => [...accumulater, ...team],
-        []
-      );
-
-      const shortRoster = playerList.filter((player) =>
-        player.person.fullName.toLowerCase().includes(name.toLowerCase())
-      );
-
-      const listPromsies = shortRoster.map((player) =>
-        dataSources.playerAPI.returnPlayer(player.person.id, season)
-      );
-      return Promise.all(listPromsies);
-    },
     getSchedule: (_, { startDate, endDate }, { dataSources }) => {
       const scheduleDate = validateDates(startDate, endDate);
       return dataSources.scheduleAPI.returnSchedule(
