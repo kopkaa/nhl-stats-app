@@ -31,6 +31,7 @@ export const GET_TEAM = gql`
         height
         weight
         positionCode
+				playerPhotoUrl
         stats {
           hits
           assists

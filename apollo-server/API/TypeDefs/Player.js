@@ -23,6 +23,7 @@ const Player = `
     team: Team
     position: String
     positionCode: String
+		playerPhotoUrl: String
   }
 `;
 module.exports = Player;

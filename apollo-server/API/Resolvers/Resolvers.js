@@ -1,9 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable consistent-return */
-/* eslint-disable no-return-await */
-/* eslint-disable no-empty-pattern */
-/* eslint-disable max-len */
-/* eslint-disable-next-line no-return-await */
 const validateSeasons = require("../../utils/season.js");
 const validateDates = require("../../utils/dates.js");
 
@@ -42,7 +36,6 @@ const Resolvers = {
     },
   },
   Team: {
-    //TODO prepsat (pomale to je)
     players: async (parent, {}, { dataSources }) => {
       let players = await dataSources.teamAPI.returnRoster(
         parent.id,
@@ -54,6 +47,7 @@ const Resolvers = {
           player.person.id,
           parent.season
         );
+				p.playerPhotoUrl = `https://assets.nhle.com/mugs/nhl/${parent.season}/${parent.abbreviation}/${player.person.id}.png`;
         return p;
       });
     },
