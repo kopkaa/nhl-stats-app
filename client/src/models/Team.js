@@ -24,7 +24,7 @@ export const GET_TEAM = gql`
         id
         name
       }
-      # TODO pomale players
+
       players {
         id
         fullName
@@ -32,6 +32,7 @@ export const GET_TEAM = gql`
         weight
         positionCode
 				playerPhotoUrl
+				primaryNumber
         stats {
           hits
           assists
