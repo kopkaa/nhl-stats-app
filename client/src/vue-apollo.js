@@ -12,14 +12,14 @@ import {
 Vue.use(VueApollo);
 
 let uri;
-if (process.env.NODE_ENV == "dev") {
+if (process.env.NODE_ENV === "dev") {
   uri = "http://localhost:8000/graphql";
 } else {
   uri = "https://nhl-app-server.herokuapp.com/graphql";
 }
 
 const httpLink = createHttpLink({
-  uri: uri,
+  uri,
 });
 
 // Name of the localStorage item
@@ -30,7 +30,7 @@ const AUTH_TOKEN = "apollo-token";
 // Config
 const defaultOptions = {
   // You can use `https` for secure connection (recommended in production)
-  //httpEndpoint,
+  // httpEndpoint,
   // You can use `wss` for secure connection (recommended in production)
   // Use `null` to disable subscriptions
   wsEndpoint: null,
@@ -84,7 +84,7 @@ export function createProvider(options = {}) {
       console.log(
         "%cError",
         "background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;",
-        error.message
+        error.message,
       );
     },
   });

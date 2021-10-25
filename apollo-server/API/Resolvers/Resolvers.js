@@ -47,7 +47,7 @@ const Resolvers = {
           player.person.id,
           parent.season
         );
-				p.playerPhotoUrl = `https://assets.nhle.com/mugs/nhl/${parent.season}/${parent.abbreviation}/${player.person.id}.png`;
+        p.playerPhotoUrl = `https://assets.nhle.com/mugs/nhl/${parent.season}/${parent.abbreviation}/${player.person.id}.png`;
         return p;
       });
     },

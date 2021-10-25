@@ -1,15 +1,14 @@
 <template>
-
   <v-container class="pa-10 h-100">
     <div
-      class="d-flex justify-center align-center h-100"
       v-if="loading"
+      class="d-flex justify-center align-center h-100"
     >
       <v-progress-circular
         :size="50"
         indeterminate
         color="#3498db"
-      ></v-progress-circular>
+      />
     </div>
 
     <div v-if="!loading">
@@ -40,23 +39,21 @@
               v-if="n === 1"
               :players="team.players"
             />
-
           </v-card>
         </v-col>
       </v-row>
     </div>
   </v-container>
-
 </template>
 
 <script>
-import { GET_TEAM } from "../models/Team";
-import TopTen from "../components/TopTen.vue";
+import { GET_TEAM } from '../models/Team';
+import TopTen from '../components/TopTen.vue';
 
 export default {
-  name: "Team",
+  name: 'Team',
   components: {
-    "top-ten": TopTen,
+    'top-ten': TopTen,
   },
   data() {
     return {
@@ -68,7 +65,7 @@ export default {
   apollo: {
     getTeam: {
       query: GET_TEAM,
-      loadingKey: "loading",
+      loadingKey: 'loading',
       variables() {
         return {
           season: this.$currentSeason,

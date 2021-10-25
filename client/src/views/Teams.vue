@@ -2,7 +2,20 @@
   <v-container class="pa-10">
     <v-row no-gutters>
       <v-col
-        v-for="(team, index) of getTeams"
+        cols="6"
+        md="4"
+      >
+        <v-text-field
+          v-model="search"
+          color="blue-grey lighten-5"
+          label="Team"
+          class="ma-3"
+        />
+      </v-col>
+    </v-row>
+    <v-row no-gutters>
+      <v-col
+        v-for="(team, index) of filteredItems"
         :key="index"
         cols="12"
         sm="4"
@@ -32,18 +45,23 @@
 <script>
 // TODO Search team a filter podle divize
 
-import { GET_TEAMS } from "../models/Team";
+import searchMixin from '../mixins/searchMixin';
+
+import { GET_TEAMS } from '../models/Team';
 
 export default {
-  name: "Teams",
+  name: 'Teams',
+  mixins: [searchMixin],
   data() {
-    return {};
+    return {
+      filter: 'teams',
+      search: '',
+    };
   },
-
   apollo: {
     getTeams: {
       query: GET_TEAMS,
-      loadingKey: "loading",
+      loadingKey: 'loading',
       variables() {
         return {
           season: this.$currentSeason,
@@ -56,7 +74,7 @@ export default {
 
   methods: {
     openDetail(id) {
-      this.$router.push({ name: "team-detail", params: { id } });
+      this.$router.push({ name: 'team-detail', params: { id } });
     },
   },
 };

@@ -20,27 +20,25 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
-  data () {
+  data() {
     return {
       isCollapsed: false,
     };
   },
   computed: {
-    navigatorWidth () {
+    navigatorWidth() {
       return this.isCollapsed ? '50px' : '15vw';
     },
   },
-  created () {
+  created() {
     console.log('🏒 NHL Season: ', this.$currentSeason);
   },
   methods: {
-    menuCollapse (value) {
+    menuCollapse(value) {
       this.isCollapsed = value;
     },
   },
-
 };
 </script>
