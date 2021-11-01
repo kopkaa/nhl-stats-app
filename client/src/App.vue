@@ -12,7 +12,7 @@
 
     <v-main
       class="pa-0"
-      :class="{ menuCollapsed: isCollapsed, main: !isCollapsed}"
+      :class="{ menuCollapsed: isCollapsed, main: !isCollapsed }"
     >
       <router-view />
     </v-main>
