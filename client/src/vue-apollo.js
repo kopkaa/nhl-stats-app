@@ -1,21 +1,21 @@
-import Vue from "vue";
-import VueApollo from "vue-apollo";
+import Vue from 'vue';
+import VueApollo from 'vue-apollo';
 // import { InMemoryCache } from 'apollo-cache-inmemory';
-import { onError } from "apollo-link-error";
-import { createHttpLink } from "apollo-link-http";
+import { onError } from 'apollo-link-error';
+import { createHttpLink } from 'apollo-link-http';
 import {
   createApolloClient,
   restartWebsockets,
-} from "vue-cli-plugin-apollo/graphql-client";
+} from 'vue-cli-plugin-apollo/graphql-client';
 
 // Install the vue plugin
 Vue.use(VueApollo);
 
 let uri;
-if (process.env.NODE_ENV === "dev") {
-  uri = "http://localhost:8000/graphql";
+if (process.env.NODE_ENV === 'dev') {
+  uri = 'http://localhost:8000/graphql';
 } else {
-  uri = "https://nhl-app-server.herokuapp.com/graphql";
+  uri = 'https://nhl-app-server.herokuapp.com/graphql';
 }
 
 const httpLink = createHttpLink({
@@ -23,7 +23,7 @@ const httpLink = createHttpLink({
 });
 
 // Name of the localStorage item
-const AUTH_TOKEN = "apollo-token";
+const AUTH_TOKEN = 'apollo-token';
 
 // const memCache = new InMemoryCache();
 
@@ -82,8 +82,8 @@ export function createProvider(options = {}) {
     errorHandler(error) {
       // eslint-disable-next-line no-console
       console.log(
-        "%cError",
-        "background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;",
+        '%cError',
+        'background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;',
         error.message,
       );
     },
@@ -94,7 +94,7 @@ export function createProvider(options = {}) {
 
 // Manually call this when user log in
 export async function onLogin(apolloClient, token) {
-  if (typeof localStorage !== "undefined" && token) {
+  if (typeof localStorage !== 'undefined' && token) {
     localStorage.setItem(AUTH_TOKEN, token);
   }
   if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient);
@@ -102,13 +102,13 @@ export async function onLogin(apolloClient, token) {
     await apolloClient.resetStore();
   } catch (e) {
     // eslint-disable-next-line no-console
-    console.log("%cError on cache reset (login)", "color: orange;", e.message);
+    console.log('%cError on cache reset (login)', 'color: orange;', e.message);
   }
 }
 
 // Manually call this when user log out
 export async function onLogout(apolloClient) {
-  if (typeof localStorage !== "undefined") {
+  if (typeof localStorage !== 'undefined') {
     localStorage.removeItem(AUTH_TOKEN);
   }
   if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient);
@@ -116,6 +116,6 @@ export async function onLogout(apolloClient) {
     await apolloClient.resetStore();
   } catch (e) {
     // eslint-disable-next-line no-console
-    console.log("%cError on cache reset (logout)", "color: orange;", e.message);
+    console.log('%cError on cache reset (logout)', 'color: orange;', e.message);
   }
 }

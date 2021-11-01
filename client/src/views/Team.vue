@@ -55,7 +55,7 @@ export default {
   components: {
     'top-ten': TopTen,
   },
-  data() {
+  data () {
     return {
       team: null,
       loading: true,
@@ -66,24 +66,24 @@ export default {
     getTeam: {
       query: GET_TEAM,
       loadingKey: 'loading',
-      variables() {
+      variables () {
         return {
           season: this.$currentSeason,
           id: parseInt(this.$route.params.id, 10),
         };
       },
-      skip() {
+      skip () {
         return true;
       },
     },
   },
 
-  async created() {
+  async created () {
     await this.fetchData();
   },
 
   methods: {
-    fetchData() {
+    fetchData () {
       this.$apollo.queries.getTeam.skip = false;
       this.$apollo.queries.getTeam.refetch().then((result) => {
         this.team = result.data.getTeam;

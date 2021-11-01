@@ -8,7 +8,7 @@
         <v-text-field
           v-model="search"
           color="blue-grey lighten-5"
-          label="Team"
+          label="Tým"
           class="ma-3"
         />
       </v-col>
@@ -45,16 +45,13 @@
 </template>
 
 <script>
-// TODO Search team a filter podle divize
-
 import searchMixin from '../mixins/searchMixin';
-
 import { GET_TEAMS } from '../models/Team';
 
 export default {
   name: 'Teams',
   mixins: [searchMixin],
-  data() {
+  data () {
     return {
       filter: 'teams',
       search: '',
@@ -64,7 +61,7 @@ export default {
     getTeams: {
       query: GET_TEAMS,
       loadignKey: 'loading',
-      variables() {
+      variables () {
         return {
           season: this.$currentSeason,
         };
@@ -73,7 +70,7 @@ export default {
   },
 
   methods: {
-    openDetail(id) {
+    openDetail (id) {
       this.$router.push({ name: 'team-detail', params: { id } });
     },
   },

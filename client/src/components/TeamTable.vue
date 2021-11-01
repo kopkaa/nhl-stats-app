@@ -32,7 +32,7 @@
             return-object
             single-line
           >
-            <template v-slot:selection="{item, index}">
+            <template v-slot:selection="{ item, index }">
               <v-chip
                 v-if="index < 3"
                 color="primary"
@@ -65,9 +65,7 @@
         calculate-widths
         hide-default-footer
       >
-        <template
-          v-slot:item.name="{item}"
-        >
+        <template v-slot:item.name="{ item }">
           <div class="table__first-column">
             <img
               :src="item.logoUrl"
@@ -77,16 +75,12 @@
           </div>
         </template>
 
-        <template
-          v-slot:[`item.score`]="{item}"
-        >
+        <template v-slot:[`item.score`]="{ item }">
           <span> {{ item.standing.goalsScored }}:{{ item.standing.goalsAgainst }}</span>
         </template>
 
-        <template
-          v-slot:[`item.standing.goalDiff`]="{item}"
-        >
-          <span :class="item.standing.goalDiff >= 0 ? 'color-emerald':'color-alizarin' ">
+        <template v-slot:[`item.standing.goalDiff`]="{ item }">
+          <span :class="item.standing.goalDiff >= 0 ? 'color-emerald' : 'color-alizarin'">
             {{ item.standing.goalDiff }}
           </span>
         </template>
@@ -117,7 +111,7 @@ import headers from './headers/teamTable';
 
 export default {
   name: 'Tables',
-  data () {
+  data() {
     return {
       divisions: [
         {
@@ -163,20 +157,20 @@ export default {
     getTeams: {
       query: GET_ALL_TEAMS_STATS,
       loadingKey: 'loading',
-      variables () {
+      variables() {
         return {
           season: this.$currentSeason,
         };
       },
 
-      skip () {
+      skip() {
         return true;
       },
     },
   },
 
   computed: {
-    tableTeams () {
+    tableTeams() {
       if (this.selectedDivision.id) {
         const selectedTeams = _.filter(this.teams, (team) => {
           if (team.division.id === this.selectedDivision.id) return team;
@@ -185,38 +179,38 @@ export default {
       }
       return this.teams;
     },
-    hideableColumns () {
+    hideableColumns() {
       return this.headers.filter((header) => header.hideable === true);
     },
-    columns () {
+    columns() {
       const defaultColumns = this.headers.filter((header) => header.hideable === false);
       return defaultColumns.concat(this.selectedColumns);
     },
   },
 
-  async created () {
+  async created() {
     await this.fetchData();
     [this.selectedDivision] = this.divisions;
     this.selectedColumns = this.headers.filter((header) => header.default === true);
   },
 
   methods: {
-    fetchData () {
+    fetchData() {
       this.$apollo.queries.getTeams.skip = false;
       this.$apollo.queries.getTeams.refetch().then((results) => {
         this.teams = results.data.getTeams;
         this.teams.forEach((element) => {
           Object.keys(element.stats).forEach((v) => {
+            // eslint-disable-next-line no-undef
             element.stats[v] = _.floor(element.stats[v], 2);
           });
         });
       });
     },
 
-    openDetail (id) {
+    openDetail(id) {
       this.$router.push({ name: 'team-detail', params: { id } });
     },
   },
-
 };
 </script>
