@@ -13,7 +13,9 @@
         />
       </v-col>
     </v-row>
-    <v-row no-gutters>
+    <v-row
+      no-gutters
+    >
       <v-col
         v-for="(team, index) of filteredItems"
         :key="index"
@@ -61,7 +63,7 @@ export default {
   apollo: {
     getTeams: {
       query: GET_TEAMS,
-      loadingKey: 'loading',
+      loadignKey: 'loading',
       variables() {
         return {
           season: this.$currentSeason,
@@ -69,8 +71,6 @@ export default {
       },
     },
   },
-
-  created() {},
 
   methods: {
     openDetail(id) {

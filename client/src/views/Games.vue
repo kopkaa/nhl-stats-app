@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import { CONFS } from "../models/Conference";
+import { CONFS } from '../models/Conference';
 
 export default {
-  name: "Games",
+  name: 'Games',
   data() {
     return {
       confs: [],
@@ -23,7 +23,7 @@ export default {
   apollo: {
     getConferences: {
       query: CONFS,
-      loadingKey: "loading",
+      loadingKey: 'loading',
     },
   },
 
