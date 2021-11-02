@@ -11,10 +11,12 @@
 	"parserOptions": {
 			"ecmaVersion": 12
 	},
+	"globals": { "_": true },
 	"plugins": [
 		"vue"
-],
+	],
 	"rules": {
 		"quotes": [2, "single"]
 	}
+	
 }

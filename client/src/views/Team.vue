@@ -47,6 +47,8 @@
 </template>
 
 <script>
+// TODO team stats
+// TODO roster
 import { GET_TEAM } from '../models/Team';
 import TopTen from '../components/TopTen.vue';
 

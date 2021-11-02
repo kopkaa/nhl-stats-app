@@ -8,11 +8,26 @@
         @change="changeTab($event)"
       >
         <v-tab
-          v-for="tab in tabs"
-          :key="tab"
+          v-for="(tab, index) in tabs"
+          :key="index"
         >
           {{ tab.title }}
         </v-tab>
+        <div
+          class="mr-8 ml-auto"
+          style="width:125px"
+        >
+          <v-select
+            v-model="selectedPosition"
+            :items="positions"
+            item-text="title"
+            item-value="code"
+            label="Pozice"
+            class="pt-1"
+            solo
+            dense
+          />
+        </div>
       </v-tabs>
     </div>
 
@@ -115,7 +130,7 @@
 
           <div class="mt-7 d-flex w-100 pa-4 justify-center">
             <span class="text-uppercase  subtitle-1 mr-5">
-              <span class="blue--text text--lighten-3 mr-1">G: </span>
+              <span class="blue--text text--lighten-3 mr-1">P: </span>
               {{ showedPlayer.stats.points }}
             </span>
             <br>
@@ -175,12 +190,12 @@
 
           <div class="mt-7 d-flex w-100 pa-4 justify-center">
             <span class="text-uppercase  subtitle-1 mr-5">
-              <span class="blue--text text--lighten-3 mr-1">G: </span>
+              <span class="blue--text text--lighten-3 mr-1">P: </span>
               {{ showedPlayer.stats.points }}
             </span>
             <br>
             <span class="text-uppercase  subtitle-1 mr-5">
-              <span class="blue--text text--lighten-3 mr-1">P: </span>
+              <span class="blue--text text--lighten-3 mr-1">G: </span>
               {{ showedPlayer.stats.goals }}
             </span>
             <br>
@@ -208,8 +223,8 @@
 </template>
 <script>
 // TODO topten of all teams
-// TODO switch mezi obranci, utocniky
-// TODO kdyz switchnu tak vybrat prvniho z zebricku
+// TODO gamesPlayed pridat
+
 export default {
   name: 'TopTen',
 
@@ -222,9 +237,24 @@ export default {
 
   data () {
     return {
-      showedPlayer: 'cs',
+      showedPlayer: null,
       imgLoaded: false,
       tab: null,
+      positions: [
+        {
+          title: 'Vše',
+          code: 'all',
+        },
+        {
+          title: 'Útok',
+          code: 'forwards',
+        },
+        {
+          title: 'Obrana',
+          code: 'defense',
+        },
+      ],
+      selectedPosition: 'all',
       tabs: [
         {
           title: 'Body',
@@ -244,9 +274,22 @@ export default {
 
   computed: {
     topTen () {
+      // oddelit filtrovani utok/obrana
+      let { players } = this;
+      if (this.selectedPosition === 'forwards') {
+        players = _.reject(players, { positionCode: 'D' });
+      }
+      else if (this.selectedPosition === 'defense') {
+        players = _.reject(
+          players,
+          (player) => player.positionCode === 'C'
+            || player.positionCode === 'L'
+            || player.positionCode === 'R',
+        );
+      }
       return (filterBy) => _.take(
         _.orderBy(
-          _.filter(_.reject(this.players, { positionCode: 'G' }), (player) => player.stats),
+          _.filter(_.reject(players, { positionCode: 'G' }), (player) => player.stats),
           filterBy,
           'desc',
         ),
