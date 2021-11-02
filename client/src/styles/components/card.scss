@@ -11,5 +11,14 @@
 			cursor: pointer;
 			transform: scale(1.2);
 		}
+
+		&__tabs {
+			width: 100%;
+
+			.v-window-item {
+				width: 100%;
+				display: flex;
+			}
+		}
 	}
 }
