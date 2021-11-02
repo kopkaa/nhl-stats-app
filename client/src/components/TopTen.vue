@@ -5,12 +5,13 @@
       <v-tabs
         v-model="tab"
         class="mb-8"
+        @change="changeTab($event)"
       >
         <v-tab
           v-for="tab in tabs"
           :key="tab"
         >
-          {{ tab }}
+          {{ tab.title }}
         </v-tab>
       </v-tabs>
     </div>
@@ -207,6 +208,8 @@
 </template>
 <script>
 // TODO topten of all teams
+// TODO switch mezi obranci, utocniky
+// TODO kdyz switchnu tak vybrat prvniho z zebricku
 export default {
   name: 'TopTen',
 
@@ -222,7 +225,20 @@ export default {
       showedPlayer: 'cs',
       imgLoaded: false,
       tab: null,
-      tabs: ['Body', 'Goly', 'Asistence'],
+      tabs: [
+        {
+          title: 'Body',
+          filterBy: 'stats.points',
+        },
+        {
+          title: 'Goly',
+          filterBy: 'stats.goals',
+        },
+        {
+          title: 'Asistence',
+          filterBy: 'stats.assists',
+        },
+      ],
     };
   },
 
@@ -231,7 +247,7 @@ export default {
       return (filterBy) => _.take(
         _.orderBy(
           _.filter(_.reject(this.players, { positionCode: 'G' }), (player) => player.stats),
-          filterBy, // TODO Points, Goal, Assists zalozky a u kazdeho vyber Obrance/Utok
+          filterBy,
           'desc',
         ),
         10,
@@ -241,12 +257,16 @@ export default {
 
   created () {
     const [showedPlayer] = this.topTen('stats.points');
-    this.showedPlayer = showedPlayer;
+    this.showPlayer(showedPlayer);
   },
 
   methods: {
     showPlayer (player) {
       this.showedPlayer = player;
+    },
+    changeTab (event) {
+      const [showedPlayer] = this.topTen(this.tabs[event].filterBy);
+      this.showPlayer(showedPlayer);
     },
   },
 };
