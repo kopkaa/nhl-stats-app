@@ -26,6 +26,7 @@
             class="pt-1"
             solo
             dense
+            @change="positionChanged($event)"
           />
         </div>
       </v-tabs>
@@ -274,8 +275,8 @@ export default {
 
   computed: {
     topTen () {
-      // oddelit filtrovani utok/obrana
       let { players } = this;
+
       if (this.selectedPosition === 'forwards') {
         players = _.reject(players, { positionCode: 'D' });
       }
@@ -308,7 +309,14 @@ export default {
       this.showedPlayer = player;
     },
     changeTab (event) {
-      const [showedPlayer] = this.topTen(this.tabs[event].filterBy);
+      this.showFirstPlayer(event);
+    },
+    positionChanged () {
+      this.showFirstPlayer(this.tab);
+    },
+
+    showFirstPlayer (tabIndex) {
+      const [showedPlayer] = this.topTen(this.tabs[tabIndex].filterBy);
       this.showPlayer(showedPlayer);
     },
   },

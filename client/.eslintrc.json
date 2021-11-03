@@ -16,7 +16,9 @@
 		"vue"
 	],
 	"rules": {
-		"quotes": [2, "single"]
+		"quotes": [2, "single"],
+		"array-bracket-spacing": [2, "always"],
+		"no-console": "error"
 	}
 	
 }
