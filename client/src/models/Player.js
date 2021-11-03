@@ -1,8 +1,16 @@
+/* eslint-disable no-tabs */
+/* eslint-disable import/prefer-default-export */
 import gql from 'graphql-tag';
 
-// // eslint-disable-next-line import/prefer-default-export
-// export const GET_TEAM_PLAYERS = gql` query GetPlayers($team_id: Int!) {
-// 	getTeamPlayers(id: $team_id) {
-
-// 	}
-// }`;
+export const GET_PLAYER = gql` query GetPlayer($player_id: Int!, $season: Int!) {
+	getPlayer(id: $player_id, $season: Int!) {
+		fullName,
+		currentAge,
+		stats,
+		rosterStatus,
+		shootsCatches,
+		position,
+		playerPhotoUrl,
+		primaryNumber
+	}
+}`;

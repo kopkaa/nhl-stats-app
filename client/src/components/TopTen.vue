@@ -15,7 +15,7 @@
         </v-tab>
         <div
           class="mr-8 ml-auto"
-          style="width:125px"
+          style="width:200px"
         >
           <v-select
             v-model="selectedPosition"
@@ -23,7 +23,7 @@
             item-text="title"
             item-value="code"
             label="Pozice"
-            class="pt-1"
+            class="pt-2"
             solo
             dense
             @change="positionChanged($event)"
@@ -43,15 +43,22 @@
           <v-avatar
             size="100"
             color="blue-grey lighten-5"
+            class="playerAvatar"
+            @click="openPlayerDetail(showedPlayer.id)"
           >
             <v-img
               :lazy-src="showedPlayer.playerPhotoUrl"
               :src="showedPlayer.playerPhotoUrl"
             />
           </v-avatar>
-          <div class="mt-3 text-center">
-            <span class="body-1">#{{ showedPlayer.primaryNumber }} | </span>
-            <span class="body-1">{{ showedPlayer.fullName }}</span><br>
+          <div
+            class="mt-3 text-center"
+            @click="openPlayerDetail(showedPlayer.id)"
+          >
+            <div class="playerFullName">
+              <span class="body-1">#{{ showedPlayer.primaryNumber }} | </span>
+              <span class="body-1">{{ showedPlayer.fullName }}</span><br>
+            </div>
             <span class="grey--text text--lighten-2">{{ showedPlayer.positionCode }}</span>
           </div>
 
@@ -68,7 +75,7 @@
           </div>
 
           <div class="mt-7 d-flex w-100 pa-4 justify-center">
-            <!-- TODO udelat tooltip timeonice average -->
+            <!-- TODO udelat tooltipy na všechno -->
             <span class="text-uppercase  subtitle-1 mr-5">
               <span class="blue--text text--lighten-3 mr-1">G: </span>
               {{ showedPlayer.stats.goals }}
@@ -79,6 +86,10 @@
               {{ showedPlayer.stats.assists }}
             </span>
             <br>
+            <span class="text-uppercase  subtitle-1 mr-5">
+              <span class="blue--text text--lighten-3 mr-1">GP:</span>
+              {{ showedPlayer.stats.games }}
+            </span>
             <span class="text-uppercase  subtitle-1">
               <span class="blue--text text--lighten-3 mr-1">toi:</span>
               {{ showedPlayer.stats.timeOnIcePerGame }}
@@ -140,6 +151,10 @@
               {{ showedPlayer.stats.assists }}
             </span>
             <br>
+            <span class="text-uppercase  subtitle-1 mr-5">
+              <span class="blue--text text--lighten-3 mr-1">GP:</span>
+              {{ showedPlayer.stats.games }}
+            </span>
             <span class="text-uppercase  subtitle-1">
               <span class="blue--text text--lighten-3 mr-1">toi:</span>
               {{ showedPlayer.stats.timeOnIcePerGame }}
@@ -200,6 +215,10 @@
               {{ showedPlayer.stats.goals }}
             </span>
             <br>
+            <span class="text-uppercase  subtitle-1 mr-5">
+              <span class="blue--text text--lighten-3 mr-1">GP:</span>
+              {{ showedPlayer.stats.games }}
+            </span>
             <span class="text-uppercase  subtitle-1">
               <span class="blue--text text--lighten-3 mr-1">toi:</span>
               {{ showedPlayer.stats.timeOnIcePerGame }}
@@ -243,7 +262,7 @@ export default {
       tab: null,
       positions: [
         {
-          title: 'Vše',
+          title: 'Všichni hráči',
           code: 'all',
         },
         {
@@ -318,6 +337,9 @@ export default {
     showFirstPlayer (tabIndex) {
       const [showedPlayer] = this.topTen(this.tabs[tabIndex].filterBy);
       this.showPlayer(showedPlayer);
+    },
+    openPlayerDetail (playerId) {
+      console.log('PlayerID', playerId);
     },
   },
 };

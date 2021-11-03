@@ -1,15 +1,22 @@
 .card {
 
 	&__team:hover {
-		cursor: pointer;
-		transform: scale(1.2);
+		@include scale-it(1.2);
 
 	}
 
 	&__topTen {
 		ul:hover {
+			@include scale-it(1.2);
+		}
+
+		.playerAvatar:hover {
+			@include scale-it(1.1);
+		}
+
+		.playerFullName:hover {
 			cursor: pointer;
-			transform: scale(1.2);
+			text-decoration: underline;
 		}
 
 		&__tabs {

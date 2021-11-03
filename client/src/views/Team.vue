@@ -49,6 +49,7 @@
 <script>
 // TODO team stats
 // TODO roster
+// TODO WIn/L streak
 import { GET_TEAM } from '../models/Team';
 import TopTen from '../components/TopTen.vue';
 
