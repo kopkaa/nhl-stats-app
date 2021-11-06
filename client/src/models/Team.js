@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 // eslint-disable-next-line import/prefer-default-export
 export const GET_TEAMS = gql`
@@ -25,14 +25,22 @@ export const GET_TEAM = gql`
         name
       }
 
+      stats {
+        wins
+        losses
+        ot
+        pts
+        ptPctg
+      }
+
       players {
         id
         fullName
         height
         weight
         positionCode
-				playerPhotoUrl
-				primaryNumber
+        playerPhotoUrl
+        primaryNumber
         stats {
           hits
           assists

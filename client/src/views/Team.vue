@@ -24,6 +24,11 @@
         <h3 class="text-center font-weight-light grey--text">
           {{ team.division.name }}
         </h3>
+        <span class="w-100 d-inline-block text-center mt-2">
+          <span class="color-emerald"> W:</span> {{ team.stats.wins }}
+          <span class="color-alizarin ml-2">L:</span> {{ team.stats.losses }}
+          <span class="grey--text ml-2">OT:</span> {{ team.stats.ot }}
+        </span>
       </div>
       <v-row no-gutters>
         <v-col

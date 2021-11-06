@@ -74,7 +74,7 @@
             <br>
           </div>
 
-          <div class="mt-7 d-flex w-100 pa-4 justify-center">
+          <div class="mt-7 d-flex w-100 pa-0 justify-center">
             <!-- TODO udelat tooltipy na všechno -->
             <span class="text-uppercase  subtitle-1 mr-5">
               <span class="blue--text text--lighten-3 mr-1">G: </span>
@@ -140,7 +140,7 @@
             <br>
           </div>
 
-          <div class="mt-7 d-flex w-100 pa-4 justify-center">
+          <div class="mt-7 d-flex w-100 pa-0 justify-center">
             <span class="text-uppercase  subtitle-1 mr-5">
               <span class="blue--text text--lighten-3 mr-1">P: </span>
               {{ showedPlayer.stats.points }}
@@ -204,7 +204,7 @@
             <br>
           </div>
 
-          <div class="mt-7 d-flex w-100 pa-4 justify-center">
+          <div class="mt-7 d-flex w-100 pa-0 justify-center">
             <span class="text-uppercase  subtitle-1 mr-5">
               <span class="blue--text text--lighten-3 mr-1">P: </span>
               {{ showedPlayer.stats.points }}
