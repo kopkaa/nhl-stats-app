@@ -1,4 +1,5 @@
 // eslint-disable-next-line import/prefer-default-export
+// TODO add more stat info
 const headers = [
   {
     text: 'Name', align: 'start', value: 'name', hideable: false,

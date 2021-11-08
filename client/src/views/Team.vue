@@ -44,6 +44,7 @@
               v-if="n === 1"
               :players="team.players"
             />
+            <!-- <match-card v-if="n === 2" /> -->
           </v-card>
         </v-col>
       </v-row>
@@ -56,12 +57,15 @@
 // TODO roster
 // TODO WIn/L streak
 import { GET_TEAM } from '../models/Team';
+// import { GET_MATCHES_BY_TEAM } from '../models/Match';
 import TopTen from '../components/TopTen.vue';
+// import MatchCard from '../components/MatchCard.vue';
 
 export default {
   name: 'Team',
   components: {
     'top-ten': TopTen,
+    // MatchCard,
   },
   data () {
     return {
@@ -84,6 +88,21 @@ export default {
         return true;
       },
     },
+
+    // getMatches: {
+    //   query: GET_MATCHES_BY_TEAM,
+    //   loadingKey: 'loading',
+    //   variables () {
+    //     return {
+    //       teamId: this.team.id,
+    //       startDate:
+    // 			endDate:
+    //     };
+    //   },
+    //   skip () {
+    //     return true;
+    //   },
+    // },
   },
 
   async created () {
