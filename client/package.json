@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "set NODE_ENV=dev&&vue-cli-service serve",
-    "build": "rm -rf dist/ && vue-cli-service build"
+    "build": "rm -rf dist/ && vue-cli-service build",
+    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --force",
+    "postinstall": "npm rebuild node-sass && npm install --unsafe-perm -f node-sass"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.6.6",
