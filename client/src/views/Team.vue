@@ -57,7 +57,7 @@
 // TODO roster
 // TODO WIn/L streak
 import { GET_TEAM } from '../models/Team';
-// import { GET_MATCHES_BY_TEAM } from '../models/Match';
+import { GET_MATCHES_BY_TEAM } from '../models/Match';
 import TopTen from '../components/TopTen.vue';
 // import MatchCard from '../components/MatchCard.vue';
 
@@ -89,34 +89,42 @@ export default {
       },
     },
 
-    // getMatches: {
-    //   query: GET_MATCHES_BY_TEAM,
-    //   loadingKey: 'loading',
-    //   variables () {
-    //     return {
-    //       teamId: this.team.id,
-    //       startDate:
-    // 			endDate:
-    //     };
-    //   },
-    //   skip () {
-    //     return true;
-    //   },
-    // },
+    getMatches: {
+      query: GET_MATCHES_BY_TEAM,
+      loadingKey: 'loading',
+      variables () {
+        return {
+          teamId: this.team.id,
+          startDate: Date.now().toString(),
+          endDate: (Date.now() - 30).toString(),
+        };
+      },
+      skip () {
+        return true;
+      },
+    },
   },
 
   async created () {
+    console.log('Date now', Date.now().toString());
     await this.fetchData();
   },
 
   methods: {
     fetchData () {
-      this.$apollo.queries.getTeam.skip = false;
-      this.$apollo.queries.getTeam.refetch().then((result) => {
-        this.team = result.data.getTeam;
+      // TODO fetch promises in paralell
+      this.$apollo.queries.getMatches.skip = false;
+      this.$apollo.queries.getMatches.refetch().then((result) => {
+        console.log('RESULT', result);
         this.loading = false;
       });
     },
+    //   this.$apollo.queries.getTeam.skip = false;
+    //   this.$apollo.queries.getTeam.refetch().then((result) => {
+    //     this.team = result.data.getTeam;
+    //     this.loading = false;
+    //   });
+    // },
   },
 };
 </script>
