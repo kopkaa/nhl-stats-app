@@ -1,5 +1,6 @@
 const validateSeasons = require("../../utils/season.js");
 const validateDates = require("../../utils/dates.js");
+const moment = require('moment');
 
 const Resolvers = {
   Player: {
@@ -14,8 +15,8 @@ const Resolvers = {
       dataSources.playerAPI.returnStats(parent.id, parent.season),
   },
   Schedule: {
-    games: (parent, {}, { dataSources }) => {
-      const games = dataSources.scheduleAPI.returnGames(
+    games: async (parent, {}, { dataSources }) => {
+      const games = await dataSources.scheduleAPI.returnGames(
         parent.teamId,
         parent.date
       );
