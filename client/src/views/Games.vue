@@ -14,7 +14,7 @@ import { CONFS } from '../models/Conference';
 
 export default {
   name: 'Games',
-  data() {
+  data () {
     return {
       confs: [],
     };
