@@ -44,6 +44,7 @@
               v-if="n === 1"
               :players="team.players"
             />
+            {{}}
             <!-- <match-card v-if="n === 2" /> -->
           </v-card>
         </v-col>
@@ -70,6 +71,7 @@ export default {
   data () {
     return {
       team: null,
+      matches: null,
       loading: true,
     };
   },
@@ -94,7 +96,7 @@ export default {
       loadingKey: 'loading',
       variables () {
         return {
-          teamId: this.team.id,
+          teamId: 1,
           startDate: Date.now().toString(),
           endDate: (Date.now() - 30).toString(),
         };
@@ -106,25 +108,23 @@ export default {
   },
 
   async created () {
-    console.log('Date now', Date.now().toString());
     await this.fetchData();
   },
 
   methods: {
-    fetchData () {
+    async fetchData () {
       // TODO fetch promises in paralell
+      this.$apollo.queries.getTeam.skip = false;
       this.$apollo.queries.getMatches.skip = false;
-      this.$apollo.queries.getMatches.refetch().then((result) => {
-        console.log('RESULT', result);
-        this.loading = false;
-      });
+
+      let result = await this.$apollo.queries.getMatches.refetch();
+      console.log('RESULT', result);
+      result = await this.$apollo.queries.getTeam.refetch();
+      this.team = result.data.getTeam;
+
+      // this.matches = result.data.getMatches;
+      this.loading = false;
     },
-    //   this.$apollo.queries.getTeam.skip = false;
-    //   this.$apollo.queries.getTeam.refetch().then((result) => {
-    //     this.team = result.data.getTeam;
-    //     this.loading = false;
-    //   });
-    // },
   },
 };
 </script>

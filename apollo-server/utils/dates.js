@@ -5,11 +5,15 @@ const START_DATE_DEFAULT = new Date().setDate(date.getDate() - 7);
 const END_DATE_DEFAULT = new Date().setDate(date.getDate() + 7);
 
 const validateDates = (startDate, endDate) => {
-  startDate = startDate || moment(START_DATE_DEFAULT).format("YYYY-MM-DD");
-  endDate = endDate || moment(END_DATE_DEFAULT).format("YYYY-MM-DD");
+  startDate = moment(START_DATE_DEFAULT).format("YYYY-MM-DD");
+  endDate = moment(END_DATE_DEFAULT).format("YYYY-MM-DD");
+
+
 
   const validatedStartDate = returnValidatedDate(startDate);
   const validatedEndDate = returnValidatedDate(endDate);
+	console.log('START', validatedStartDate);
+	console.log('END', validatedEndDate);
   if (validatedStartDate === "error" || validatedEndDate === "error") {
     throw new Error(
       "Start and End dates must be valid dates in the format YYYY-MM-DD or the words, today, tomorrow or yesterday"
