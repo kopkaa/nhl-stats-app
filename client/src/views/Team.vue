@@ -44,7 +44,6 @@
               v-if="n === 1"
               :players="team.players"
             />
-            {{}}
             <!-- <match-card v-if="n === 2" /> -->
           </v-card>
         </v-col>
