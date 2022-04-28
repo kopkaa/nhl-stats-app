@@ -10,6 +10,9 @@ export const GET_MATCHES_BY_TEAM = gql` query GetMatches($teamId: Int!, $startDa
 			awayTeam {
 				name
 			}
+			homeTeam {
+				name
+			}
 		}
 	}
 }`;

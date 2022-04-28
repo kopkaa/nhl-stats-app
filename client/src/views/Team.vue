@@ -30,7 +30,7 @@
           <span class="grey--text ml-2">OT:</span> {{ team.stats.ot }}
         </span>
       </div>
-      <v-row no-gutters>
+      <v-row>
         <v-col
           v-for="n in 2"
           :key="n"
@@ -44,7 +44,13 @@
               v-if="n === 1"
               :players="team.players"
             />
-            <!-- <match-card v-if="n === 2" /> -->
+            <div
+              v-for="(match, index) in matches"
+              v-else
+              :key="index"
+            >
+              <match-card :game="match" />
+            </div>
           </v-card>
         </v-col>
       </v-row>
@@ -59,13 +65,13 @@
 import { GET_TEAM } from '../models/Team';
 import { GET_MATCHES_BY_TEAM } from '../models/Match';
 import TopTen from '../components/TopTen.vue';
-// import MatchCard from '../components/MatchCard.vue';
+import MatchCard from '../components/MatchCard.vue';
 
 export default {
   name: 'Team',
   components: {
     'top-ten': TopTen,
-    // MatchCard,
+    MatchCard,
   },
   data () {
     return {
@@ -90,12 +96,12 @@ export default {
       },
     },
 
-    getMatches: {
+    getScheduleByTeam: {
       query: GET_MATCHES_BY_TEAM,
       loadingKey: 'loading',
       variables () {
         return {
-          teamId: 1,
+          teamId: parseInt(this.$route.params.id, 10),
           startDate: Date.now().toString(),
           endDate: (Date.now() - 30).toString(),
         };
@@ -114,14 +120,14 @@ export default {
     async fetchData () {
       // TODO fetch promises in paralell
       this.$apollo.queries.getTeam.skip = false;
-      this.$apollo.queries.getMatches.skip = false;
+      this.$apollo.queries.getScheduleByTeam.skip = false;
 
-      let result = await this.$apollo.queries.getMatches.refetch();
-      console.log('RESULT', result);
-      result = await this.$apollo.queries.getTeam.refetch();
+      let result = await this.$apollo.queries.getTeam.refetch();
       this.team = result.data.getTeam;
 
-      // this.matches = result.data.getMatches;
+      result = await this.$apollo.queries.getScheduleByTeam.refetch();
+      this.matches = result.data.getScheduleByTeam;
+
       this.loading = false;
     },
   },

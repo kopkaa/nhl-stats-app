@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */ /* eslint-disable no-undef */
 <template>
-  <div class="d-flex flex-row card__topTen flex-wrap">
+  <div class="d-flex flex-row card__topTen flex-wrap mr-2">
     <div class="w-100">
       <v-tabs
         v-model="tab"
